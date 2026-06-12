@@ -4,55 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Auden Salazar | Digital Communications Portfolio</title>
-  <meta name="description" content="Portfolio of Auden Salazar, a strategic communicator specializing in storytelling, social media, email marketing, video production, design, and photography." />
-
+  <meta name="description" content="Portfolio of Auden Salazar, a digital communications professional specializing in social media strategy, storytelling, email marketing, video production, design, and photography." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="styles.css" />
 </head>
 
- <script>
-const galleryImages = document.querySelectorAll('.photo-gallery img');
-
-galleryImages.forEach(img => {
-  img.addEventListener('click', () => {
-    const overlay = document.createElement('div');
-
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100vw';
-    overlay.style.height = '100vh';
-    overlay.style.background = 'rgba(0,0,0,.9)';
-    overlay.style.display = 'flex';
-    overlay.style.alignItems = 'center';
-    overlay.style.justifyContent = 'center';
-    overlay.style.cursor = 'pointer';
-    overlay.style.zIndex = '9999';
-
-    const fullImage = document.createElement('img');
-    fullImage.src = img.src;
-    fullImage.style.maxWidth = '90%';
-    fullImage.style.maxHeight = '90%';
-    fullImage.style.borderRadius = '12px';
-
-    overlay.appendChild(fullImage);
-
-    overlay.addEventListener('click', () => {
-      overlay.remove();
-    });
-
-    document.body.appendChild(overlay);
-  });
-});
-</script> 
-  
 <body>
   <header class="site-header">
     <a class="brand" href="#top">Auden Salazar</a>
-
     <nav aria-label="Main navigation">
       <a href="#work">Work</a>
       <a href="#photography">Photography</a>
@@ -64,75 +25,100 @@ galleryImages.forEach(img => {
   <main id="top">
     <section class="hero section">
       <div class="hero-copy">
-        <p class="eyebrow">Strategic Communicator</p>
-        <h1>Digital storytelling for communities, causes, and moments that matter.</h1>
-        <p class="lede">I create meaningful communications through social media strategy, email marketing, graphic design, photography, video production, and long-form storytelling.</p>
-
+        <p class="eyebrow">Hello, I'm Auden and I have a passion for...</p>
+        <h1>Connecting people, ideas, and communities through storytelling.</h1>
+        <p class="lede">
+          Through my skills in photography, videography, writing, and design, I create content that educates, engages, and inspires.
+        </p>
         <div class="cta-row">
-          <a class="button primary" href="#work">View Work</a>
+          <a class="button primary" href="#work">View Featured Work</a>
           <a class="button ghost" href="mailto:auden.b.salazar@gmail.com">Email Me</a>
         </div>
       </div>
 
         <img src="images/passportme@3x.png" alt="Auden Salazar headshot" />
-
     </section>
 
     <section class="stats section" aria-label="Portfolio highlights">
-      <article><strong>78%</strong><span>Instagram growth</span></article>
-      <article><strong>50%</strong><span>Computer Science enrollment boost</span></article>
-      <article><strong>12k</strong><span>Magazine constituents reached</span></article>
-      <article><strong>10k</strong><span>Alumni mailer recipients</span></article>
-    </section>
-
-    <section id="about" class="about section">
-      <div>
-        <p class="eyebrow">About</p>
-        <h2>Hi, I’m Auden.</h2>
-      </div>
-
-      <div class="about-text">
-        <p>I’m an enthusiastic digital communications professional with a passion for storytelling and creating meaningful content for good. With experience in Adobe Creative Suite, social media strategy, graphic design, email marketing, video production, and photography, I create campaigns that align with organizational goals and values.</p>
-        <p>Currently serving as a Communications Assistant at Seattle Preparatory School, I’ve supported social media growth, admissions and advancement marketing, and community-building initiatives with DEI at the forefront of my work. When I’m not behind the camera or keyboard, I’m dedicated to building community and being a positive force. Oh—and I’m from Texas. Yee-haw.</p>
-      </div>
+      <article>
+        <strong>3+</strong>
+        <span>Years of Institutional Communcations Experience</span>
+      </article>
+      <article>
+        <strong>78%</strong>
+        <span>Social Auidence Engagement Growth</span>
+      </article>
+      <article>
+        <strong>80%</strong>
+        <span>Open-rate Maintained for Community Newsletter</span>
+      </article>
+      <article>
+        <strong>12k</strong>
+        <span>Readers Reached Through Community Publications</span>
+      </article>
     </section>
 
     <section id="work" class="section">
       <div class="section-heading">
-        <p class="eyebrow">Selected Work</p>
-        <h2>Case studies</h2>
+        <p class="eyebrow">Featured Work</p>
+        <h2>Strategic storytelling across platforms.</h2>
       </div>
+
+      <article class="featured-case">
+        <div>
+          <p class="eyebrow">Featured Case Study — Seattle Preparatory School</p>
+          <h3>Growing engagement through community-centered storytelling</h3>
+        </div>
+        <div>
+          <p>
+            At Seattle Prep, I help manage social media, email, web, photography, video, and
+            publications in support of admissions, advancement, alumni relations,
+            academics, and student life.
+          </p>
+          <p>
+            By listening to the community, identifying strong stories, and translating them into
+            platform-specific content, I helped grow Instagram engagement by 78% while maintaining
+            strong email performance across a broad school audience.
+          </p>
+        </div>
+      </article>
 
       <div class="project-grid">
         <article class="project-card">
-          <img src="images/prep-post.jpg" alt="Prep Post newsletter examples" />
+          <img class="top" src="images/social-phone-mockup.jpg" alt="Seattle Preparatory social media examples" />
           <div class="project-body">
             <span class="number">01</span>
-            <h3>Prep Post</h3>
-            <p class="type">Weekly E-Newsletter</p>
-            <p>Created a weekly newsletter for 1,200+ constituents, managing submissions and designing a consistent community news resource in BeeFree.</p>
+            <h3>Social Media Strategy</h3>
+            <p class="type">Audience Growth + Community Engagement</p>
+            <p>
+              Managed Seattle Prep’s official social channels with an emphasis on content strategy,
+              community-centered storytelling, audience growth, and performance-informed planning.
+            </p>
             <ul>
-              <li><b>When:</b> 2023–Present</li>
-              <li><b>Role:</b> Email Marketing</li>
-              <li><b>Result:</b> Maintained strong open rates across a 1,400+ constituent base.</li>
+              <li><b>Focus:</b> Social media management, content creation, analytics</li>
+              <li><b>Platforms:</b> Instagram, Facebook, LinkedIn</li>
+              <li><b>Result:</b> Increased Instagram engagement by 78%.</li>
             </ul>
-            <a href="https://www.seaprep.org/news/prep-post-archive" target="_blank" rel="noreferrer">View archive</a>
+            <a href="https://www.instagram.com/seattlepreparatory/" target="_blank" rel="noreferrer">View Instagram</a>
           </div>
         </article>
 
         <article class="project-card">
-          <img class="top" src="images/social-phone-mockup.jpg" alt="Seattle Preparatory social media examples" />
+          <img src="images/prep-post.jpg" alt="Prep Post newsletter examples" />
           <div class="project-body">
             <span class="number">02</span>
-            <h3>@SeattlePreparatory</h3>
-            <p class="type">Social Media</p>
-            <p>Managed Seattle Prep’s official social channels with an emphasis on Instagram growth, content sourcing, and community-centered storytelling.</p>
+            <h3>Prep Post</h3>
+            <p class="type">Email Marketing + Editorial Workflow</p>
+            <p>
+              Produced a weekly community newsletter by managing submissions, organizing content,
+              writing copy, and designing a consistent digital news resource.
+            </p>
             <ul>
-              <li><b>When:</b> 2023–Present</li>
-              <li><b>Role:</b> Social Media Content Creation and Management</li>
-              <li><b>Result:</b> Grew Instagram by 78%, with average post likes increasing from 60 to 240.</li>
+              <li><b>Focus:</b> Email marketing, editorial planning, audience engagement</li>
+              <li><b>Tools:</b> BeeFree, Mailchimp</li>
+              <li><b>Result:</b> Maintained open rates around 80%.</li>
             </ul>
-            <a href="https://www.instagram.com/seattlepreparatory/" target="_blank" rel="noreferrer">View Instagram</a>
+            <a href="https://www.seaprep.org/news/prep-post-archive" target="_blank" rel="noreferrer">View archive</a>
           </div>
         </article>
 
@@ -141,14 +127,17 @@ galleryImages.forEach(img => {
           <div class="project-body">
             <span class="number">03</span>
             <h3>Panther Tracks</h3>
-            <p class="type">Annual Community Magazine</p>
-            <p>Contributed interviews, writing, and workflow support for Seattle Prep’s annual community magazine, helping tell stories across the school community.</p>
+            <p class="type">Editorial Storytelling + Writing</p>
+            <p>
+              Contributed interviews, writing, and workflow support for Seattle Prep’s annual
+              community magazine, translating institutional stories into accessible long-form content.
+            </p>
             <ul>
-              <li><b>When:</b> 2023, 2024</li>
-              <li><b>Role:</b> Long- and short-form written content</li>
-              <li><b>Result:</b> Helped produce two issues received by 12,000 constituents.</li>
+              <li><b>Focus:</b> Journalism, interviews, feature writing</li>
+              <li><b>Audience:</b> Families, alumni, donors, and community members</li>
+              <li><b>Result:</b> Helped produce issues reaching 12,000 constituents.</li>
             </ul>
-            <a href="http://bit.ly/3PurBvL" target="_blank" rel="noreferrer">Read magazine</a>
+            <a href="http://bit.ly/3PurBvL" target="_blank" rel="noreferrer">Read Samples</a>
           </div>
         </article>
 
@@ -157,92 +146,70 @@ galleryImages.forEach(img => {
           <div class="project-body">
             <span class="number">04</span>
             <h3>For Others</h3>
-            <p class="type">Seattle Prep Highlight Reel</p>
-            <p>Worked with Filmateria and Seattle Prep Admissions to develop a six-minute video showcasing academics, athletics, ministry, and student life.</p>
+            <p class="type">Video Production + Campaign Management</p>
+            <p>
+              Worked with Filmateria and Seattle Prep Admissions to develop a six-minute video
+              showcasing academics, athletics, ministry, and student life for prospective families.
+            </p>
             <ul>
-              <li><b>When:</b> Summer 2024</li>
-              <li><b>Role:</b> Video Production</li>
-              <li><b>Result:</b> Created an admissions video for prospective families and the admissions webpage.</li>
+              <li><b>Focus:</b> Video production, storytelling, admissions marketing</li>
+              <li><b>Role:</b> Creative support and production coordination</li>
+              <li><b>Result:</b> Created a key admissions video for web and outreach.</li>
             </ul>
             <a href="https://youtu.be/1hdw2lQQW30?si=_eK9w85iBB196u5Q" target="_blank" rel="noreferrer">Watch video</a>
           </div>
         </article>
 
         <article class="project-card">
-          <img src="images/passport-to-prep-1.jpg" alt="Passport to Prep viewbook pages" />
-          <div class="project-body">
-            <span class="number">05</span>
-            <h3>Passport to Prep</h3>
-            <p class="type">Seattle Prep Viewbook</p>
-            <p>Supported a print and mail admissions piece that framed the Seattle Prep experience as a journey for prospective students and parents.</p>
-            <ul>
-              <li><b>When:</b> August 2024</li>
-              <li><b>Role:</b> Print and Mail Marketing</li>
-              <li><b>Result:</b> Mailed to 800+ families with key admissions messaging and dates.</li>
-            </ul>
-            <a href="https://bit.ly/420y3yu" target="_blank" rel="noreferrer">View project</a>
-          </div>
-        </article>
-
-        <article class="project-card">
           <img src="images/computer-science.jpg" alt="Computer Science course promotion video still" />
           <div class="project-body">
-            <span class="number">06</span>
+            <span class="number">05</span>
             <h3>Build the Next Gen of Tech</h3>
-            <p class="type">Computer Science Course Offering Showcase</p>
-            <p>Produced an in-house promotional video for Seattle Prep’s Academics Office to help boost enrollment in Computer Science courses.</p>
+            <p class="type">Video Production</p>
+            <p>
+              Produced an in-house promotional video for Seattle Prep’s Academics Office to help
+              promote Computer Science course offerings and increase student interest.
+            </p>
             <ul>
-              <li><b>When:</b> January 2025</li>
-              <li><b>Role:</b> Video Production</li>
-              <li><b>Result:</b> Computer Science classes saw a 50% boost in enrollment.</li>
+              <li><b>Focus:</b> Video production, academic storytelling, campaign support</li>
+              <li><b>Audience:</b> Current students and families</li>
+              <li><b>Result:</b> Computer Science classes saw a 50% enrollment boost.</li>
             </ul>
             <a href="https://vimeo.com/1160289252/75b8835f5b" target="_blank" rel="noreferrer">Watch video</a>
           </div>
         </article>
 
         <article class="project-card">
-          <img src="images/alumni-mailers.jpg" alt="Alumni Week mailer examples" />
+          <img src="images/passport-to-prep-1.jpg" alt="Passport to Prep viewbook pages" />
           <div class="project-body">
-            <span class="number">07</span>
-            <h3>Alumni Week Mailers</h3>
-            <p class="type">Alumni Event Postcards</p>
-            <p>Designed visually compelling postcards to increase alumni event visibility and encourage participation in Seattle Prep alumni programming.</p>
+            <span class="number">06</span>
+            <h3>Passport to Prep</h3>
+            <p class="type">Admissions Marketing + Print Communications</p>
+            <p>
+              Supported a print and mail admissions piece that framed the Seattle Prep experience
+              as a journey for prospective students and parents.
+            </p>
             <ul>
-              <li><b>When:</b> 2023–Present</li>
-              <li><b>Role:</b> Print and Mail Marketing</li>
-              <li><b>Result:</b> Distributed direct mail campaigns reaching nearly 10,000 alumni.</li>
+              <li><b>Focus:</b> Print marketing, brand messaging, admissions communications</li>
+              <li><b>Audience:</b> Prospective families</li>
+              <li><b>Result:</b> Mailed to 800+ families with key admissions messaging.</li>
             </ul>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <img src="images/ras-on-duty.jpg" alt="RAs On Duty documentary still" />
-          <div class="project-body">
-            <span class="number">08</span>
-            <h3>RAs On Duty</h3>
-            <p class="type">Short Documentary</p>
-            <p>Created a short documentary at WSU following two Resident Advisors during rounds and capturing the community-building work of campus life.</p>
-            <ul>
-              <li><b>When:</b> Fall 2022</li>
-              <li><b>Role:</b> Video Production</li>
-              <li><b>Result:</b> Produced a documentary-style glimpse into student leadership and belonging.</li>
-            </ul>
-            <a href="https://youtu.be/iTrWDR5eNrQ?si=f8tmLJrnJMTD0vQD" target="_blank" rel="noreferrer">Watch video</a>
+            <a href="https://bit.ly/420y3yu" target="_blank" rel="noreferrer">View project</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="photography" class="section">
+    <section id="photography" class="strategy section">
       <div class="section-heading">
         <p class="eyebrow">Photography</p>
-        <h2>Visual storytelling</h2>
+        <h2>Visual storytelling.</h2>
       </div>
 
       <p class="lede">
         Photography is one of the primary ways I tell stories and build community.
-        From athletics and performing arts to student leadership and campus events,
-        I use imagery to capture moments that connect audiences to a larger mission.
+        From performing arts and academics to student leadership and campus events,
+        I use my eye for imagery to capture moments that connect audiences to a larger mission.
       </p>
 
       <div class="photo-gallery">
@@ -257,11 +224,33 @@ galleryImages.forEach(img => {
       </div>
     </section>
 
+    <section id="about" class="about section">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2>Experienced Digital Communicator.</h2>
+      </div>
+      <div class="about-text">
+        <p>
+          I’m a digital communications professional with experience in social media strategy,
+          graphic design, email marketing, video production, photography, web content, and
+          long-form storytelling.
+        </p>
+        <p>
+          Currently, I serve as Communications Assistant at Seattle Preparatory School, where I
+          support social media, publications, admissions and advancement marketing, digital content,
+          website management, and community-building initiatives.
+        </p>
+        <p>
+          I’m especially drawn to work that bridges ideas across communities and helps people see
+          themselves in a shared mission.
+        </p>
+      </div>
+    </section>
+
     <section id="contact" class="contact section">
       <p class="eyebrow">Contact</p>
       <h2>Let’s connect.</h2>
       <p>I’m always excited to talk about storytelling, community-building, and thoughtful digital communications work.</p>
-
       <div class="contact-links">
         <a href="mailto:auden.b.salazar@gmail.com">auden.b.salazar@gmail.com</a>
         <a href="tel:+14324383204">(432) 438-3204</a>
