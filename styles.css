@@ -76,3 +76,15 @@ footer { padding: 28px 72px; text-align: center; color: var(--muted); }
   h1 { font-size: 44px; }
   .section { padding-left: 18px; padding-right: 18px; }
 }
+.instagram-embed-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  width: 100%;
+}
+
+.instagram-media {
+  max-width: 540px;
+  width: 100%;
+  min-width: 326px;
+}
