@@ -13,6 +13,42 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 
+ <script>
+const galleryImages = document.querySelectorAll('.photo-gallery img');
+
+galleryImages.forEach(img => {
+  img.addEventListener('click', () => {
+    const overlay = document.createElement('div');
+
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100vw';
+    overlay.style.height = '100vh';
+    overlay.style.background = 'rgba(0,0,0,.9)';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.cursor = 'pointer';
+    overlay.style.zIndex = '9999';
+
+    const fullImage = document.createElement('img');
+    fullImage.src = img.src;
+    fullImage.style.maxWidth = '90%';
+    fullImage.style.maxHeight = '90%';
+    fullImage.style.borderRadius = '12px';
+
+    overlay.appendChild(fullImage);
+
+    overlay.addEventListener('click', () => {
+      overlay.remove();
+    });
+
+    document.body.appendChild(overlay);
+  });
+});
+</script> 
+  
 <body>
   <header class="site-header">
     <a class="brand" href="#top">Auden Salazar</a>
