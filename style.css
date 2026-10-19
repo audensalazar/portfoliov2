@@ -68,3 +68,62 @@ body.home-page { background:var(--framer-yellow); color:#171717; min-height:100v
  .home-page .home-work {gap:29px;}
  .home-page .home-work a {font-size:22px;}
 }
+
+/* Shared Framer-inspired design system across ALL portfolio pages.
+   The homepage's existing screenshot-based rules remain intact. */
+:root {
+  --bg: #ffe501;
+  --ink: #171717;
+  --muted: #202020;
+  --line: rgba(23,23,23,.5);
+  --accent: #ffe501;
+  --framer-yellow: #ffe501;
+  --framer-blue: #2449e8;
+}
+body { background:var(--framer-yellow); color:var(--ink); }
+/* Consistent page gutters and upper navigation, including internal pages */
+body:not(.home-page) .wrap { width:auto; max-width:none; margin-left:13.15%; margin-right:7.8%; padding-left:0; padding-right:0; }
+body:not(.home-page) .topbar { background:transparent; border:0; }
+body:not(.home-page) .nav { min-height:105px; align-items:center; gap:24px; }
+body:not(.home-page) .brand { font-family:var(--font-body); font-weight:400; font-size:24px; letter-spacing:-.025em; text-decoration:underline; text-underline-offset:2px; }
+body:not(.home-page) .navlinks { gap:36px; }
+body:not(.home-page) .navlinks a { color:var(--ink); font-family:var(--font-caption); font-weight:400; font-size:17px; text-decoration:underline; text-underline-offset:2px; }
+body:not(.home-page) .navlinks a[aria-current="page"] { font-weight:400; text-decoration-thickness:2px; }
+body:not(.home-page) .navlinks a:hover, body:not(.home-page) .brand:hover { opacity:.65; }
+/* Section headings and featured type take the same cobalt pixel color as the homepage */
+body:not(.home-page) h1,
+body:not(.home-page) h2,
+body:not(.home-page) h3,
+body:not(.home-page) .large-type { color:var(--framer-blue); font-family:var(--font-header); font-weight:400; letter-spacing:-.04em; }
+body:not(.home-page) .page-header { padding:115px 0 65px; }
+body:not(.home-page) .page-header h1 { font-size:clamp(40px,5vw,80px); line-height:1.15; margin:24px 0; }
+body:not(.home-page) .page-header p { font-family:var(--font-body); font-size:clamp(20px,1.6vw,25px); line-height:1.5; color:var(--ink); }
+body:not(.home-page) .back { font-family:var(--font-caption); color:var(--framer-blue); font-size:16px; text-decoration:underline; text-underline-offset:3px; }
+body:not(.home-page) .section-head { border-top:1px solid var(--ink); }
+body:not(.home-page) .section-head h2 { font-size:clamp(32px,3.4vw,58px); line-height:1.15; }
+body:not(.home-page) .section-head span { font-family:var(--font-caption); color:var(--ink); }
+body:not(.home-page) .card h3 { font-size:clamp(20px,1.8vw,28px); }
+body:not(.home-page) .card p { font-family:var(--font-caption); color:var(--ink); }
+body:not(.home-page) .about-grid p,
+body:not(.home-page) .project p { font-family:var(--font-body); color:var(--ink); }
+body:not(.home-page) .notice { background:rgba(255,255,255,.18); border-left:3px solid var(--framer-blue); color:var(--ink); font-family:var(--font-caption); }
+body:not(.home-page) .thumb { background:rgba(255,255,255,.2); border:1px solid rgba(23,23,23,.35); }
+body:not(.home-page) .thumb span { color:var(--ink); }
+body:not(.home-page) footer { border-top:1px solid var(--ink); }
+body:not(.home-page) footer strong { font-family:var(--font-body); font-weight:400; font-size:20px; }
+body:not(.home-page) footer p, body:not(.home-page) footer a { color:var(--ink); font-family:var(--font-caption); }
+body:not(.home-page) .text-link { text-decoration:underline; text-underline-offset:3px; }
+a:focus-visible { outline-color:var(--framer-blue); }
+@media (max-width:900px) {
+  body:not(.home-page) .wrap { margin-left:7%; margin-right:7%; }
+  body:not(.home-page) .nav { padding-top:24px; padding-bottom:24px; align-items:flex-start; flex-direction:column; gap:20px; }
+  body:not(.home-page) .navlinks { gap:14px 25px; }
+  body:not(.home-page) .page-header { padding-top:75px; }
+}
+@media (max-width:540px) {
+  body:not(.home-page) .wrap { margin-left:6%; margin-right:6%; }
+  body:not(.home-page) .brand { font-size:22px; }
+  body:not(.home-page) .navlinks a { font-size:14px; }
+  body:not(.home-page) .page-header { padding-top:58px; }
+  body:not(.home-page) .page-header h1 { overflow-wrap:anywhere; font-size:clamp(30px,8vw,43px); }
+}
