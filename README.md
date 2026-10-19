@@ -44,3 +44,7 @@ The typography in `style.css` uses **Geist Pixel** for headings, **IBM Plex Seri
 ## Screenshot-matched homepage
 
 The homepage was restyled from the provided Framer reference screenshot (bright yellow background, cobalt Geist Pixel headline, IBM Plex Serif copy, General Sans links). Interior project pages remain an approximate recreation. The Geist Pixel Google Fonts variant uses `ELSH` Square; other pixel variants can be selected by adjusting this value.
+
+### Shared styling update
+
+All five HTML pages now use the same yellow background, cobalt-blue Geist Pixel headings, IBM Plex Serif body copy, and General Sans navigation/captions. The shared navigation and responsive page gutters also match the homepage reference. The inner-page layouts and portfolio placeholder content remain as before; their exact original Framer composition has not been reconstructed.
