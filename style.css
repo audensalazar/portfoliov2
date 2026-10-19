@@ -44,7 +44,7 @@ body.home-page { background:var(--framer-yellow); color:#171717; min-height:100v
 .home-page .navlinks {gap:36px;}
 .home-page .navlinks a {color:#141414;font-family:var(--font-caption);font-weight:400;font-size:17px;text-decoration:underline;text-underline-offset:2px;}
 .home-page .hero {padding-top:150px;padding-bottom:0;}
-.home-page .hero h1 {font-family:var(--font-header);font-variation-settings:'ELSH' 1;font-size:clamp(35px,2.47vw,51px);font-weight:400;letter-spacing:-.04em;line-height:1.17;max-width:1050px;margin:0 0 35px;color:var(--framer-blue);}
+.home-page .hero h1 {font-family:var(--font-header);font-variation-settings:'ELSH' 1;font-size:clamp(42px,2.47vw,51px);font-weight:400;letter-spacing:-.04em;line-height:1.17;max-width:1050px;margin:0 0 35px;color:var(--framer-blue);}
 .home-page .hero p {font-family:var(--font-body);font-size:25px;line-height:1.5;max-width:850px;color:#202020;margin:0 0 33px;}
 .home-page .explore-label {font-family:var(--font-caption);color:#627ce3;font-size:17px;line-height:1.6;}
 .home-page .home-work {display:flex;flex-direction:column;align-items:flex-start;gap:36px;padding-top:30px;padding-bottom:130px;}
