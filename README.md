@@ -1,50 +1,26 @@
-# Auden Salazar — GitHub Pages Portfolio
+# Auden Salazar Portfolio — GitHub Pages
 
-A lightweight, responsive static site based on the public navigation and homepage copy of https://technical-exceptions-780357.framer.app/.
+This static site includes the five featured projects from `Portfolio.pdf` (October 2026). It preserves the yellow/blue Framer-inspired design and original five-page navigation.
 
-## Important limitation
+## Publish to GitHub Pages
+1. Extract the ZIP and upload the **contents** (not the enclosing folder) to your repository root.
+2. On GitHub go to Settings → Pages → Deploy from a branch → `main` → `/ (root)`.
+3. Open the GitHub Pages URL once deployment finishes.
 
-This is **a recreation/starter site, not a pixel-perfect Framer export**. The Framer subpages did not expose their original project content or images through the available retrieval. Placeholder projects appear in `projects.json`; import your own content and media before replacing your live portfolio.
+## Edit projects in one place
+`projects.json` is the single source for all featured cards and case studies. Each entry contains:
+- `slug`: permanent project address, for example `project.html?slug=social-media-strategy`
+- `title`, `summary`, `paragraphs`, `role`, `timeline`, `tools`
+- `categories`: any combination of `design`, `writing`, `photography-videography`
+- `primary`: label on the project card
+- `featured`: true to show on the homepage
+- `order`: lower numbers appear first
+- `cover`: local photo path such as `assets/images/social-media-cover.jpg`
+- `gallery`: image records such as `{ "src": "assets/images/social-post.jpg", "alt": "Social post", "caption": "Campaign graphic" }`
+- `links`: records such as `{ "label": "Read article", "url": "https://example.com" }`
 
-## Publish on GitHub Pages
+To add media, upload image files to `assets/images/`, then enter their relative paths in `projects.json`. Video can be added as a link in `gallery` with `{"type":"video","url":"https://vimeo.com/...","caption":"..."}` or in `links`. No original project photos were available in the PDF; image placeholders deliberately remain text-only until real images are added.
 
-1. Unzip this download.
-2. Create a new GitHub repository, for example `Portfolio`.
-3. Upload **the files inside** `auden-portfolio-github` to the **root of the repository**, keeping `assets/` intact.
-4. In GitHub, open **Settings → Pages**.
-5. Under **Build and deployment**, choose **Deploy from a branch**, `main`, and `/ (root)`, then save.
-6. Your homepage will be accessible at `https://YOUR-USERNAME.github.io/Portfolio/` after GitHub finishes deploying.
+**Preview locally** using VS Code Live Server or `python3 -m http.server 8000`. Opening HTML directly as `file://` will not load JSON in most browsers.
 
-## Update your work
-
-- Edit `projects.json` to add or remove portfolio cards, categories, descriptions, and URLs.
-- Copy images into `assets/` and reference them as `"image": "assets/my-image.jpg"`.
-- For YouTube/Vimeo projects, use the project's external `url`.
-- Edit `about.html` to include your full biography.
-- Customize layout and typography in `style.css`.
-
-## Local preview
-
-Run `python3 -m http.server 8000` from the project directory, then visit `http://localhost:8000`. Loading HTML from the filesystem directly may block `projects.json` due to browser security restrictions.
-
-## Pages
-
-- `index.html` homepage
-- `design.html` design
-- `writing.html` writing
-- `photography-videography.html` photography/videography
-- `about.html` about
-
-No build step or dependencies are required.
-
-## Typography
-
-The typography in `style.css` uses **Geist Pixel** for headings, **IBM Plex Serif** for body copy, and **General Sans** for captions, navigation, and labels. Fonts load from Google Fonts and Fontshare. An internet connection is needed to load them; fallback fonts are provided. Geist Pixel has multiple shapes; this version uses the font provider's default variant until the specific Framer variant is confirmed.
-
-## Screenshot-matched homepage
-
-The homepage was restyled from the provided Framer reference screenshot (bright yellow background, cobalt Geist Pixel headline, IBM Plex Serif copy, General Sans links). Interior project pages remain an approximate recreation. The Geist Pixel Google Fonts variant uses `ELSH` Square; other pixel variants can be selected by adjusting this value.
-
-### Shared styling update
-
-All five HTML pages now use the same yellow background, cobalt-blue Geist Pixel headings, IBM Plex Serif body copy, and General Sans navigation/captions. The shared navigation and responsive page gutters also match the homepage reference. The inner-page layouts and portfolio placeholder content remain as before; their exact original Framer composition has not been reconstructed.
+**Note:** Descriptions were based on the supplied Portfolio PDF, with only short new card summaries. No external links were invented. Check the PDF's draft copy for any changes you want to make.
