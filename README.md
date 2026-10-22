@@ -24,3 +24,19 @@ To add media, upload image files to `assets/images/`, then enter their relative 
 **Preview locally** using VS Code Live Server or `python3 -m http.server 8000`. Opening HTML directly as `file://` will not load JSON in most browsers.
 
 **Note:** Descriptions were based on the supplied Portfolio PDF, with only short new card summaries. No external links were invented. Check the PDF's draft copy for any changes you want to make.
+
+## Project cards and case-study layout
+- Project cards show **role tags** (from each entry’s `role` field in `projects.json`) instead of a single category label. Separate each role with a comma.
+- Project detail pages use this order: **Title → Featured photo → About → My Role / Timeline / Tools**. The optional selected-work gallery and links appear afterward.
+- To add the featured photo, upload it to `assets/images/` and set its relative path in that project’s `cover` field (example: `assets/images/panther-tracks.jpg`). An intentional placeholder displays if `cover` is empty.
+- Tags are text labels styled like buttons, not links; clicking the image or title opens the case study.
+
+## Role tags update
+Role labels now appear as filled blue chips immediately below each project image and above the project title. They come from the `role` field in `projects.json`. Replace both `script.js` and `style.css` when updating an existing deployment.
+
+## This update (images + tag visibility)
+- Three photos are bundled in `assets/images/` and assigned in `projects.json`: Alumni Week, Panther Tracks, and Prep Post.
+- Role tags are **directly underneath each project image** on all project cards. They are pre-rendered in HTML, so they stay visible even when the browser cannot fetch JSON.
+- Replace **all** files at the repository root, including `index.html`, `design.html`, `writing.html`, `photography-videography.html`, `script.js`, `style.css`, `projects.json`, and `assets/images/`. The HTML has pre-rendered tags and cache-busting resource URLs.
+- To update role labels later, edit `projects.json`. For changes to also appear in the static fallback, rebuild the page HTML or ask for a regenerated package.
+- Project pages follow Title → Photo → About → Role / Timeline / Tools.

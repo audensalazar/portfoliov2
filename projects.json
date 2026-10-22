@@ -18,9 +18,10 @@
     ],
     "order": 1,
     "featured": true,
-    "cover": "",
+    "cover": "assets/images/PantherTracks2026MockUp.png",
     "gallery": [],
-    "links": []
+    "links": [],
+    "coverAlt": "Panther Tracks magazine cover and editorial spread"
   },
   {
     "slug": "alumni-week-branding",
@@ -41,9 +42,10 @@
     ],
     "order": 2,
     "featured": true,
-    "cover": "",
+    "cover": "assets/images/AWMock-UP.png",
     "gallery": [],
-    "links": []
+    "links": [],
+    "coverAlt": "Alumni Week branding with direct mail and event collateral"
   },
   {
     "slug": "admissions-communications-marketing",
@@ -114,8 +116,9 @@
     ],
     "order": 5,
     "featured": true,
-    "cover": "",
+    "cover": "assets/images/EmailMarketingMockUp.png",
     "gallery": [],
-    "links": []
+    "links": [],
+    "coverAlt": "Prep Post email newsletter mockup with related email marketing creative"
   }
 ]
