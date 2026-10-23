@@ -7,7 +7,7 @@ function roleTags(p){const tags=e('div','role-tags');tags.setAttribute('aria-lab
 function projectCard(p){
  const card=e('article','card');const link=e('a','project-card-link');link.href='project.html?slug='+encodeURIComponent(p.slug);
  const cover=e('div','thumb');if(p.cover){cover.append(createImage(p.cover,p.coverAlt||p.title+' cover'));}else{cover.append(e('span','',p.title));}
- link.append(cover);card.append(link,roleTags(p));const details=e('a','project-card-copy');details.href=link.href;details.append(e('h3','',p.title),e('p','',p.summary));card.append(details);return card;
+ link.append(cover);card.append(link);const details=e('a','project-card-copy');details.href=link.href;details.append(e('h3','',p.title),e('p','',p.summary));card.append(details,roleTags(p));return card;
 }
 async function showProjects(category){const grid=document.getElementById('projects');if(!grid)return;try{const entries=(await loadProjects()).filter(p=>p.categories.includes(category)).sort((a,b)=>a.order-b.order);grid.replaceChildren(...entries.map(projectCard));if(!entries.length)grid.append(e('p','','No projects in this category yet.'));}catch(err){grid.textContent='Project data could not load. Use GitHub Pages or a local server to preview this site.'}}
 async function showFeatured(){const grid=document.getElementById('featured-projects');if(!grid)return;try{const entries=(await loadProjects()).filter(p=>p.featured).sort((a,b)=>a.order-b.order);grid.replaceChildren(...entries.map(projectCard));}catch(err){grid.textContent='Project data could not load. Use GitHub Pages or a local server.'}}
