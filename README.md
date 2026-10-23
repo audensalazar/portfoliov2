@@ -58,3 +58,10 @@ Role labels now appear as filled blue chips immediately below each project image
 - A responsive 3/2/1 column grid keeps cards aligned.
 - Replace or upload images to `assets/images/` and update each entry's `cover` in `projects.json`. The newer images sent inline in chat were not available for inclusion in this ZIP; current images are retained.
 - Upload **all** extracted files to GitHub since HTML, JavaScript and CSS changed.
+
+
+## Version 8 updates
+- Updated project covers: Alumni Week, Admissions Marketing, Prep Post, Panther Tracks.
+- Hover only enlarges project artwork slightly and draws a blue line under its title.
+- Card containers remain fully transparent on hover; role tags wrap within grid columns.
+- All project data and cover paths are in `projects.json`.
