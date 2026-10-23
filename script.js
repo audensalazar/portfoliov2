@@ -1,6 +1,6 @@
 // Edit projects.json to change project copy, roles, galleries and cover images.
 const e=(name,cls,text)=>{const el=document.createElement(name);if(cls)el.className=cls;if(text!=null)el.textContent=text;return el};
-async function loadProjects(){const response=await fetch('./projects.json?v=11');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
+async function loadProjects(){const response=await fetch('./projects.json?v=12');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
 const createImage=(source,alt,cls)=>{const image=e('img',cls);image.src=source;image.alt=alt||'';image.loading='lazy';return image};
 function roles(p){return Array.isArray(p.roles)?p.roles:(p.role||'').split(',').map(r=>r.trim()).filter(Boolean)}
 function roleTags(p){const tags=e('div','role-tags');tags.setAttribute('aria-label','My roles');roles(p).forEach(role=>tags.append(e('span','role-tag',role)));return tags}
@@ -41,15 +41,115 @@ async function showProjectDetail(){
  }catch(err){target.textContent='Project could not be loaded. Open this site through GitHub Pages or a local web server.'}
 }
 
-// Accessible photography viewer; works without external libraries.
-function initPhotoGallery(){
- const modal=document.querySelector('#photo-lightbox');if(!modal)return;
- const picture=modal.querySelector('img');const count=modal.querySelector('.photo-lightbox-count');
- const tiles=[...document.querySelectorAll('.photo-tile')];let active=0;
- const show=(n)=>{active=(n+tiles.length)%tiles.length;const tile=tiles[active];picture.src=tile.dataset.photoSrc;picture.alt=tile.dataset.photoAlt;count.textContent=String(active+1).padStart(2,'0')+' / '+String(tiles.length).padStart(2,'0');};
- tiles.forEach((tile,index)=>tile.addEventListener('click',()=>{show(index);modal.showModal();}));
- modal.querySelector('.photo-lightbox-close').addEventListener('click',()=>modal.close());
- modal.addEventListener('click',event=>{if(event.target===modal)modal.close();});
- modal.addEventListener('keydown',event=>{if(event.key==='ArrowRight'){event.preventDefault();show(active+1)}if(event.key==='ArrowLeft'){event.preventDefault();show(active-1)}});
- modal.addEventListener('close',()=>{picture.removeAttribute('src')});
+// Accessible photo stack + lightbox; works without external libraries.
+async function initPhotoStack(){
+ const stage=document.querySelector('#photo-stack-stage');
+ const nav=document.querySelector('#photo-stack-nav');
+ const counter=document.querySelector('#photo-stack-counter');
+ const caption=document.querySelector('#photo-stack-caption');
+ const prev=document.querySelector('#photo-prev');
+ const next=document.querySelector('#photo-next');
+ const openBtn=document.querySelector('#photo-open');
+ const modal=document.querySelector('#photo-lightbox');
+ if(!stage||!nav||!counter||!caption||!modal) return;
+ let photos=[];
+ try{
+   const response=await fetch('./assets/images/photography/manifest.json?v=12');
+   if(!response.ok) throw new Error('Unable to load photo manifest');
+   photos=await response.json();
+ }catch(error){
+   stage.textContent='Photography gallery could not load.';
+   return;
+ }
+ let active=0;
+ const stackCards=[];
+ const navButtons=[];
+ const picture=modal.querySelector('img');
+ const count=modal.querySelector('.photo-lightbox-count');
+ const closeBtn=modal.querySelector('.photo-lightbox-close');
+ const prevLightbox=modal.querySelector('[data-direction="prev"]');
+ const nextLightbox=modal.querySelector('[data-direction="next"]');
+
+ const truncate=(text,max=76)=>text.length>max?text.slice(0,max-1)+'…':text;
+ const updateLightbox=(index)=>{
+   const photo=photos[(index+photos.length)%photos.length];
+   active=(index+photos.length)%photos.length;
+   picture.src=photo.src;
+   picture.alt=photo.alt||'';
+   count.textContent=`${String(active+1).padStart(2,'0')} / ${String(photos.length).padStart(2,'0')}`;
+ };
+ const openLightbox=(index=active)=>{ updateLightbox(index); if(!modal.open) modal.showModal(); };
+ const visibleDepth=6;
+ const poseFor=(order)=>{
+   const poses=[
+     {x:0,y:0,r:-2,s:1},
+     {x:26,y:16,r:4,s:.975},
+     {x:-22,y:34,r:-5,s:.95},
+     {x:30,y:52,r:6,s:.925},
+     {x:-28,y:70,r:-7,s:.9},
+     {x:34,y:88,r:8,s:.875}
+   ];
+   return poses[Math.min(order,poses.length-1)];
+ };
+ const render=()=>{
+   stackCards.forEach((card,index)=>{
+     const order=(index-active+photos.length)%photos.length;
+     const img=card.querySelector('img');
+     const num=card.querySelector('.stack-card-number');
+     const pose=poseFor(order);
+     card.dataset.state=order===0?'active':order<visibleDepth?'stacked':'hidden';
+     card.style.zIndex=String(200-order);
+     card.style.transform=`translateX(-50%) translate(${pose.x}px, ${pose.y}px) rotate(${pose.r}deg) scale(${pose.s})`;
+     card.style.opacity=order<visibleDepth?'1':'0';
+     card.style.pointerEvents=order<visibleDepth?'auto':'none';
+     card.setAttribute('aria-current',order===0?'true':'false');
+     card.setAttribute('tabindex',order===0?'0':'-1');
+     if(img) img.loading=order<3?'eager':'lazy';
+     if(num) num.textContent=photos[index].number||String(index+1).padStart(2,'0');
+   });
+   navButtons.forEach((button,index)=>button.setAttribute('aria-pressed',index===active?'true':'false'));
+   counter.textContent=`${String(active+1).padStart(2,'0')} / ${String(photos.length).padStart(2,'0')}`;
+   caption.textContent=truncate(photos[active].alt||`Portfolio photograph ${active+1}`);
+ };
+
+ photos.forEach((photo,index)=>{
+   const button=e('button','stack-card');
+   button.type='button';
+   button.dataset.index=String(index);
+   button.setAttribute('aria-label',`Photograph ${photo.number||String(index+1).padStart(2,'0')}`);
+   button.innerHTML=`<span class="stack-card-inner"><img src="${photo.src}" alt="${(photo.alt||'').replace(/"/g,'&quot;')}"/><span class="stack-card-bar"><span class="stack-card-number">${photo.number||String(index+1).padStart(2,'0')}</span><span class="stack-card-open">click to enlarge</span></span></span>`;
+   button.addEventListener('click',()=>{
+     if(active===index) openLightbox(index);
+     else { active=index; render(); }
+   });
+   button.addEventListener('keydown',event=>{
+     if(event.key==='Enter' || event.key===' '){ event.preventDefault(); if(active===index) openLightbox(index); else { active=index; render(); } }
+     if(event.key==='ArrowRight'){ event.preventDefault(); active=(active+1)%photos.length; render(); }
+     if(event.key==='ArrowLeft'){ event.preventDefault(); active=(active-1+photos.length)%photos.length; render(); }
+   });
+   stage.append(button);
+   stackCards.push(button);
+
+   const navButton=e('button','stack-nav-item');
+   navButton.type='button';
+   navButton.innerHTML=`<span class="stack-nav-number">${photo.number||String(index+1).padStart(2,'0')}</span><span class="stack-nav-label">Photograph</span>`;
+   navButton.addEventListener('click',()=>{ active=index; render(); });
+   nav.append(navButton);
+   navButtons.push(navButton);
+ });
+
+ prev?.addEventListener('click',()=>{ active=(active-1+photos.length)%photos.length; render(); });
+ next?.addEventListener('click',()=>{ active=(active+1)%photos.length; render(); });
+ openBtn?.addEventListener('click',()=>openLightbox(active));
+ closeBtn?.addEventListener('click',()=>modal.close());
+ prevLightbox?.addEventListener('click',()=>{ updateLightbox(active-1); render(); });
+ nextLightbox?.addEventListener('click',()=>{ updateLightbox(active+1); render(); });
+ modal.addEventListener('click',event=>{ if(event.target===modal) modal.close(); });
+ modal.addEventListener('keydown',event=>{
+   if(event.key==='ArrowRight'){ event.preventDefault(); updateLightbox(active+1); render(); }
+   if(event.key==='ArrowLeft'){ event.preventDefault(); updateLightbox(active-1); render(); }
+   if(event.key==='Escape'){ modal.close(); }
+ });
+ modal.addEventListener('close',()=>{ picture.removeAttribute('src'); });
+ render();
 }

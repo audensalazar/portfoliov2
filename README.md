@@ -17,3 +17,9 @@ Upload all files and folders from the extracted ZIP to the **root** of your GitH
 
 ## Publishing
 1. Unzip. 2. Upload **contents** (not the parent directory) to GitHub. 3. Commit to your published branch. 4. Wait for GitHub Pages deployment and hard-refresh.
+
+
+## Version 12
+- Photography / Videography page updated to an interactive Photo Stack layout.
+- Uses all 11 uploaded photography images from `assets/images/photography/`.
+- Includes sidebar controls and a keyboard-accessible lightbox.
