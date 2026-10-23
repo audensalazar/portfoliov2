@@ -40,3 +40,13 @@ Role labels now appear as filled blue chips immediately below each project image
 - Replace **all** files at the repository root, including `index.html`, `design.html`, `writing.html`, `photography-videography.html`, `script.js`, `style.css`, `projects.json`, and `assets/images/`. The HTML has pre-rendered tags and cache-busting resource URLs.
 - To update role labels later, edit `projects.json`. For changes to also appear in the static fallback, rebuild the page HTML or ask for a regenerated package.
 - Project pages follow Title → Photo → About → Role / Timeline / Tools.
+
+
+## Framer source fidelity update (v6)
+- Uses exact *remote* Geist Pixel, IBM Plex Serif and General Sans URLs from the provided Framer homepage HTML.
+- Applies Framer yellow `#FFE500`, cobalt `#2449E8`, and a 1120px-wide navigation bar.
+- **Removes CSS black backgrounds** behind transparent cover images and case-study hero images.
+- Keeps five featured projects, role-tag pills, linked project details and the three PNG assets.
+- Note: if an image itself contains opaque dark pixels, CSS cannot remove those pixels; the PNG needs editing.
+- To deploy, upload the **contents** of this ZIP to the repository root, replacing matching files.
+- Content remains editable in `projects.json`; image paths use `assets/images/`.
