@@ -1,6 +1,6 @@
 // Edit projects.json to change project copy, roles, galleries and cover images.
 const e=(name,cls,text)=>{const el=document.createElement(name);if(cls)el.className=cls;if(text!=null)el.textContent=text;return el};
-async function loadProjects(){const response=await fetch('./projects.json?v=12');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
+async function loadProjects(){const response=await fetch('./projects.json?v=19');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
 const createImage=(source,alt,cls)=>{const image=e('img',cls);image.src=source;image.alt=alt||'';image.loading='lazy';return image};
 function roles(p){return Array.isArray(p.roles)?p.roles:(p.role||'').split(',').map(r=>r.trim()).filter(Boolean)}
 function roleTags(p){const tags=e('div','role-tags');tags.setAttribute('aria-label','My roles');roles(p).forEach(role=>tags.append(e('span','role-tag',role)));return tags}
@@ -25,12 +25,12 @@ async function showProjectDetail(){
   const figure=e('figure','project-hero');
   if(p.cover){figure.append(createImage(p.cover,p.coverAlt||p.title+' featured image'))}
   else{const placeholder=e('div','project-photo-placeholder');placeholder.append(e('span','', 'Project image coming soon'));figure.append(placeholder)}
-  target.append(figure);
+  // Image and About are paired below on desktop.
   // 3. About
   const article=e('section','project-copy');article.append(e('h2','','About'));
   (p.paragraphs||[]).forEach(t=>article.append(e('p','',t)));
   if(p.metric)article.append(e('p','project-metric',p.metric));
-  target.append(article);
+  const imageAbout=e('div','project-image-about');figure.remove();imageAbout.append(figure,article);target.append(imageAbout);
   // 4. Role, timeline, tools
   const meta=e('section','project-meta');meta.setAttribute('aria-label','Project details');
   const role=e('div','project-meta-item');role.append(e('h2','project-meta-label','My Role'),roleTags(p));meta.append(role);
@@ -159,7 +159,7 @@ async function initVideoShowcase(){
  const dialog=document.getElementById('video-dialog');
  if(!grid||!dialog) return;
  let videos=[];
- try { const res=await fetch('videos.json?v=18'); if(res.ok) videos=await res.json(); }catch(_){}
+ try { const res=await fetch('videos.json?v=19'); if(res.ok) videos=await res.json(); }catch(_){}
  const allowed=['youtube','vimeo','instagram'];
  videos=videos.filter(v=>v&&v.title&&v.url&&allowed.includes(v.platform)&&/^https:\/\//i.test(v.url));
  empty.hidden=videos.length>0;
@@ -200,7 +200,7 @@ async function initVideoShowcase(){
  const films=document.createElement('div');films.className='video-films';
  const reels=document.createElement('div');reels.className='video-reels';
  const reelsHeading=document.createElement('h3');reelsHeading.className='reels-heading';reelsHeading.textContent='Short-form storytelling';
- const reelsPair=document.createElement('div');reelsPair.className='reels-pair';
+ const reelsPair=document.createElement('div');reelsPair.className='reels-pair';const reelsIntro=document.createElement('p');reelsIntro.className='reels-description';reelsIntro.textContent='Utilizing social media to highlight campus moments and promote special events.';
  videos.forEach(v=>{
    if(v.platform==='instagram'){
      const info=embedInfo(v);
@@ -217,6 +217,6 @@ async function initVideoShowcase(){
    button.addEventListener('click',()=>openVideo(v));card.append(button,copy);films.append(card);
  });
  if(films.children.length)grid.append(films);
- if(reelsPair.children.length){reels.append(reelsHeading,reelsPair);grid.append(reels)};
+ if(reelsPair.children.length){reels.append(reelsHeading,reelsIntro,reelsPair);grid.append(reels)};
 
 }

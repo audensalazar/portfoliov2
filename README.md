@@ -64,3 +64,11 @@ Five videos are configured in `videos.json`: one YouTube video, two Vimeo videos
 - Landscape films are displayed in a consistent two-column gallery.
 - The two Instagram-native Reel players are displayed side-by-side in a dedicated section (single column on narrow phones).
 - Edit video titles and links in `videos.json`. Instagram embeds may be blocked by browser privacy settings; direct links remain below each reel.
+
+
+## Version 19 changes
+- Photography headline and introduction revised; Photo Stack instructional text removed.
+- Video heading and subtitle updated; three-across desktop video grid, descriptions for all three long-form videos and the short-form section.
+- Project detail pages pair featured image on the left with About on the right at desktop widths, stacking on mobile.
+- Site navigation uses the same content container edges as the page.
+- Updated static pages and JSON loader version query strings to v19.

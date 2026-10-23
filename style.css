@@ -403,3 +403,20 @@ body:not(.home-page) .cards .card .thumb,
 .reel-card .instagram-native-link{align-self:flex-start;margin-top:12px}
 @media(max-width:700px){.video-films{grid-template-columns:1fr}.reels-pair{gap:10px}.reel-card .instagram-native-embed{height:520px}.reel-card .instagram-native-link{font-size:11px}}
 @media(max-width:450px){.reels-pair{grid-template-columns:1fr;max-width:420px;margin-inline:auto;gap:30px}.reel-card .instagram-native-embed{height:610px}}
+
+/* Version 19: cohesive page edges, editorial video grid, and image/about split */
+.topbar .nav, body.home-page .topbar .nav, body:not(.home-page) .topbar .nav { max-width:1320px; width:100%; padding-left:6%; padding-right:6%; box-sizing:border-box; }
+.photo-exhibit-heading { display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; gap:10px; }
+.photo-exhibit-heading p { max-width:780px; }
+.video-films { grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+.video-films .video-card { min-width:0; }
+.video-copy h3 { font-size:clamp(19px,1.75vw,26px); overflow-wrap:anywhere; }
+.video-copy p { font-size:15px; line-height:1.55; }
+.reels-description { font-family:'IBM Plex Serif',serif; margin:6px 0 24px; line-height:1.55; font-size:17px; }
+.project-image-about { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); align-items:start; gap:clamp(28px,5vw,70px); margin:20px 0 60px; }
+.project-detail .project-image-about .project-hero { margin:0 !important; min-width:0; }
+.project-detail .project-image-about .project-copy { margin:0 !important; min-width:0; max-width:none; }
+.project-detail .project-image-about .project-hero img { width:100%; height:auto; object-fit:contain; }
+.project-detail .project-meta { clear:both; }
+@media(max-width:900px){.video-films {grid-template-columns:repeat(2,minmax(0,1fr));}.project-image-about {grid-template-columns:1fr;}}
+@media(max-width:600px){.video-films {grid-template-columns:1fr;}.topbar .nav,body.home-page .topbar .nav,body:not(.home-page) .topbar .nav {width:100%;padding-left:5%;padding-right:5%;}}
