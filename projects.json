@@ -67,9 +67,10 @@
     ],
     "order": 3,
     "featured": true,
-    "cover": "",
+    "cover": "assets/images/AdmissionsMarketing.png",
     "gallery": [],
-    "links": []
+    "links": [],
+    "coverAlt": "THINK PREP admissions brochures and Open House program mockup"
   },
   {
     "slug": "social-media-strategy",
