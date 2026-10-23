@@ -72,3 +72,9 @@ Five videos are configured in `videos.json`: one YouTube video, two Vimeo videos
 - Project detail pages pair featured image on the left with About on the right at desktop widths, stacking on mobile.
 - Site navigation uses the same content container edges as the page.
 - Updated static pages and JSON loader version query strings to v19.
+
+
+## v20 corrections
+- Removed the photography “Through my lens” heading and caption entirely.
+- Navbar now uses the same responsive left and right margins as `.wrap` content on every page.
+- Bumped CSS/JS query versions to v20 to avoid stale browser CSS.
