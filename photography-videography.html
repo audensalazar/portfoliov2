@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="description" content="Photography / Videography portfolio — Auden Salazar"/>
   <title>Photography / Videography — Auden Salazar</title>
-  <link rel="stylesheet" href="style.css?v=12"/>
-  <script src="script.js?v=12"></script>
+  <link rel="stylesheet" href="style.css?v=16"/>
+  <script src="script.js?v=16"></script>
 </head>
 <body>
   <header class="topbar">
@@ -48,12 +48,26 @@
           </div>
           <div class="photo-stack-status">
             <span class="photo-stack-counter" id="photo-stack-counter">01 / 11</span>
-            <span class="photo-stack-caption" id="photo-stack-caption">Portfolio photograph 1 — Seattle Prep student life and community</span>
           </div>
           <div class="photo-stack-nav" id="photo-stack-nav" aria-label="Select a photograph"></div>
         </aside>
       </div>
     </section>
+
+
+    <section class="video-showcase" aria-labelledby="video-showcase-title">
+      <div class="photo-exhibit-heading">
+        <h2 id="video-showcase-title">In motion</h2>
+        <p>Short-form storytelling, campaigns, and films.</p>
+      </div>
+      <div class="video-grid" id="video-grid" aria-live="polite"></div>
+      <p class="video-empty" id="video-empty">Video projects coming soon.</p>
+    </section>
+    <dialog class="video-dialog" id="video-dialog" aria-label="Watch video">
+      <div class="video-dialog-header"><strong id="video-dialog-title">Video</strong><button type="button" id="video-dialog-close">Close ×</button></div>
+      <div class="video-dialog-frame" id="video-dialog-frame"></div>
+      <a id="video-dialog-external" href="#" target="_blank" rel="noopener noreferrer">Watch on original platform ↗</a>
+    </dialog>
 
     <section class="section">
       <div class="section-head">
@@ -78,7 +92,7 @@
       </div>
     </dialog>
 
-    <script>initPhotoStack();</script>
+    <script>initPhotoStack(); initVideoShowcase();</script>
   </main>
 
   <footer>

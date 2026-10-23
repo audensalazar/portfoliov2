@@ -23,3 +23,29 @@ Upload all files and folders from the extracted ZIP to the **root** of your GitH
 - Photography / Videography page updated to an interactive Photo Stack layout.
 - Uses all 11 uploaded photography images from `assets/images/photography/`.
 - Includes sidebar controls and a keyboard-accessible lightbox.
+
+
+## Video showcase (version 13)
+
+The Photography/Videography page contains a new **In motion** grid below the photo stack. No placeholder videos appear until you add entries to `videos.json`.
+
+Paste items as a JSON array using the format below (remove the comments; JSON does not support them):
+
+```json
+[
+  {
+    "title": "Your video title",
+    "platform": "youtube",
+    "url": "https://www.youtube.com/watch?v=REPLACE_WITH_REAL_ID",
+    "description": "Optional short context",
+    "thumbnail": "assets/images/video-covers/your-cover.jpg"
+  }
+]
+```
+
+Supported `platform` values: `youtube`, `vimeo`, `instagram`. Use real public video URLs and optionally upload thumbnail images to the matching repository paths. The responsive gallery will show a Play button even without thumbnail images. Embeds load only after click. Instagram may restrict embedding for some posts, so the modal also includes an external watch link. Keep content publicly accessible for visitors.
+
+The photo stack has no visible descriptive captions; concise `alt` values remain in its manifest for accessibility.
+
+## V16: Video showcase
+Five videos are configured in `videos.json`: one YouTube video, two Vimeo videos (privacy hashes retained), and two Instagram Reels. The Reel labels are temporary because no titles were supplied. Instagram may restrict third-party embeds; the lightbox has a link to watch directly on Instagram. Updating a video requires editing only `videos.json`.

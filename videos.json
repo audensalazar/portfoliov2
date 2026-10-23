@@ -1,0 +1,37 @@
+[
+  {
+    "title": "YouTube Video",
+    "platform": "youtube",
+    "url": "https://www.youtube.com/watch?v=1hdw2lQQW30",
+    "description": "",
+    "thumbnail": "https://img.youtube.com/vi/1hdw2lQQW30/hqdefault.jpg"
+  },
+  {
+    "title": "YOU’RE ACCEPTED! | SEATTLE PREP CLASS OF 2030",
+    "platform": "vimeo",
+    "url": "https://vimeo.com/1162370304?h=c732f32ca9",
+    "description": "",
+    "thumbnail": ""
+  },
+  {
+    "title": "Computer Science at Seattle Prep — Build the Next Gen of Tech",
+    "platform": "vimeo",
+    "url": "https://vimeo.com/1160289252?h=75b8835f5b",
+    "description": "",
+    "thumbnail": ""
+  },
+  {
+    "title": "Instagram Reel 01",
+    "platform": "instagram",
+    "url": "https://www.instagram.com/reel/Dew8vkVBccg/",
+    "description": "",
+    "thumbnail": ""
+  },
+  {
+    "title": "Instagram Reel 02",
+    "platform": "instagram",
+    "url": "https://www.instagram.com/reel/DV172kejv7o/",
+    "description": "",
+    "thumbnail": ""
+  }
+]

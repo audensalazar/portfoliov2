@@ -46,12 +46,11 @@ async function initPhotoStack(){
  const stage=document.querySelector('#photo-stack-stage');
  const nav=document.querySelector('#photo-stack-nav');
  const counter=document.querySelector('#photo-stack-counter');
- const caption=document.querySelector('#photo-stack-caption');
  const prev=document.querySelector('#photo-prev');
  const next=document.querySelector('#photo-next');
  const openBtn=document.querySelector('#photo-open');
  const modal=document.querySelector('#photo-lightbox');
- if(!stage||!nav||!counter||!caption||!modal) return;
+ if(!stage||!nav||!counter||!modal) return;
  let photos=[];
  try{
    const response=await fetch('./assets/images/photography/manifest.json?v=12');
@@ -70,7 +69,6 @@ async function initPhotoStack(){
  const prevLightbox=modal.querySelector('[data-direction="prev"]');
  const nextLightbox=modal.querySelector('[data-direction="next"]');
 
- const truncate=(text,max=76)=>text.length>max?text.slice(0,max-1)+'…':text;
  const updateLightbox=(index)=>{
    const photo=photos[(index+photos.length)%photos.length];
    active=(index+photos.length)%photos.length;
@@ -109,7 +107,6 @@ async function initPhotoStack(){
    });
    navButtons.forEach((button,index)=>button.setAttribute('aria-pressed',index===active?'true':'false'));
    counter.textContent=`${String(active+1).padStart(2,'0')} / ${String(photos.length).padStart(2,'0')}`;
-   caption.textContent=truncate(photos[active].alt||`Portfolio photograph ${active+1}`);
  };
 
  photos.forEach((photo,index)=>{
@@ -132,7 +129,7 @@ async function initPhotoStack(){
 
    const navButton=e('button','stack-nav-item');
    navButton.type='button';
-   navButton.innerHTML=`<span class="stack-nav-number">${photo.number||String(index+1).padStart(2,'0')}</span><span class="stack-nav-label">Photograph</span>`;
+   navButton.innerHTML=`<span class="stack-nav-number">${photo.number||String(index+1).padStart(2,'0')}</span>`;
    navButton.addEventListener('click',()=>{ active=index; render(); });
    nav.append(navButton);
    navButtons.push(navButton);
@@ -152,4 +149,63 @@ async function initPhotoStack(){
  });
  modal.addEventListener('close',()=>{ picture.removeAttribute('src'); });
  render();
+}
+
+
+// Videos are managed in videos.json; empty means no placeholders are published.
+async function initVideoShowcase(){
+ const grid=document.getElementById('video-grid');
+ const empty=document.getElementById('video-empty');
+ const dialog=document.getElementById('video-dialog');
+ if(!grid||!dialog) return;
+ let videos=[];
+ try { const res=await fetch('videos.json?v=16'); if(res.ok) videos=await res.json(); }catch(_){}
+ const allowed=['youtube','vimeo','instagram'];
+ videos=videos.filter(v=>v&&v.title&&v.url&&allowed.includes(v.platform)&&/^https:\/\//i.test(v.url));
+ empty.hidden=videos.length>0;
+ const frame=dialog.querySelector('#video-dialog-frame');
+ const dialogTitle=dialog.querySelector('#video-dialog-title');
+ const external=dialog.querySelector('#video-dialog-external');
+ function embedInfo(v){
+   try {
+     const u=new URL(v.url); let id;
+     if(v.platform==='youtube'&&/(^|\.)youtube\.com$|(^|\.)youtu\.be$/.test(u.hostname)){
+       id=u.hostname.includes('youtu.be')?u.pathname.slice(1):(u.searchParams.get('v')||u.pathname.match(/\/(?:shorts|embed)\/([^/]+)/)?.[1]);
+       if(id&&/^[a-zA-Z0-9_-]{11}$/.test(id)) return {src:'https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1',ratio:'16/9'};
+     }
+     if(v.platform==='vimeo'&&/(^|\.)vimeo\.com$/.test(u.hostname)){
+       id=u.pathname.match(/\/(\d+)/)?.[1];
+       if(id){const hash=u.searchParams.get('h');return {src:'https://player.vimeo.com/video/'+id+(hash?'?h='+encodeURIComponent(hash)+'&autoplay=1':'?autoplay=1'),ratio:'16/9'};}
+     }
+     if(v.platform==='instagram'&&/(^|\.)instagram\.com$/.test(u.hostname)){
+       const m=u.pathname.match(/^\/(reel|p)\/([a-zA-Z0-9_-]+)/);
+       if(m) return {src:`https://www.instagram.com/${m[1]}/${m[2]}/embed/`,ratio:'9/16'};
+     }
+   }catch(_){}
+   return null;
+ }
+ function openVideo(v){
+   frame.replaceChildren();
+   dialogTitle.textContent=v.title;
+   external.href=v.url;
+   const embed=embedInfo(v);
+   if(embed){const iframe=document.createElement('iframe'); iframe.src=embed.src;iframe.title=v.title;iframe.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';frame.style.aspectRatio=embed.ratio;frame.append(iframe)}
+   else {frame.style.aspectRatio='16/9';frame.textContent='Use the link below to watch this video.'}
+   dialog.showModal();
+ }
+ function closeVideo(){dialog.close();frame.replaceChildren()}
+ dialog.querySelector('#video-dialog-close').addEventListener('click',closeVideo);
+ dialog.addEventListener('close',()=>frame.replaceChildren());
+ dialog.addEventListener('click',e=>{if(e.target===dialog)closeVideo()});
+ videos.forEach(v=>{
+   const card=document.createElement('article');card.className='video-card';
+   const button=document.createElement('button');button.type='button';button.className='video-cover'; if(v.platform==='instagram')card.classList.add('video-card-reel');button.setAttribute('aria-label','Play '+v.title);
+   if(v.thumbnail){const img=document.createElement('img');img.src=v.thumbnail;img.alt='';img.loading='lazy';button.append(img)}
+   const play=document.createElement('span');play.className='video-play';play.textContent='▶';button.append(play);
+   const copy=document.createElement('div');copy.className='video-copy';
+   const h=document.createElement('h3');h.textContent=v.title;copy.append(h);
+   if(v.description){const description=document.createElement('p');description.textContent=v.description;copy.append(description)}
+   const source=document.createElement('span');source.className='video-platform';source.textContent=v.platform==='youtube'?'YouTube':v.platform==='vimeo'?'Vimeo':'Instagram Reel';copy.append(source);
+   button.addEventListener('click',()=>openVideo(v));card.append(button,copy);grid.append(card);
+ });
 }
