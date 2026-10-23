@@ -49,3 +49,11 @@ The photo stack has no visible descriptive captions; concise `alt` values remain
 
 ## V16: Video showcase
 Five videos are configured in `videos.json`: one YouTube video, two Vimeo videos (privacy hashes retained), and two Instagram Reels. The Reel labels are temporary because no titles were supplied. Instagram may restrict third-party embeds; the lightbox has a link to watch directly on Instagram. Updating a video requires editing only `videos.json`.
+
+
+## Version 17 — Vimeo thumbnails + native Instagram embeds
+- Vimeo acceptance video cover: `assets/images/video-covers/accepted.jpg`.
+- Vimeo computer science video cover: `assets/images/video-covers/computerscience.jpg`.
+- Instagram Reels render as native Instagram iframe embeds and retain a link to Instagram as a fallback if third-party embeds are blocked. Instagram controls the content and availability of embeds.
+- Edit video entries in `videos.json`.
+- When deploying, upload `videos.json`, `script.js`, `style.css`, `photography-videography.html`, and the complete `assets/images/video-covers/` folder.

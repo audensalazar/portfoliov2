@@ -159,7 +159,7 @@ async function initVideoShowcase(){
  const dialog=document.getElementById('video-dialog');
  if(!grid||!dialog) return;
  let videos=[];
- try { const res=await fetch('videos.json?v=16'); if(res.ok) videos=await res.json(); }catch(_){}
+ try { const res=await fetch('videos.json?v=17'); if(res.ok) videos=await res.json(); }catch(_){}
  const allowed=['youtube','vimeo','instagram'];
  videos=videos.filter(v=>v&&v.title&&v.url&&allowed.includes(v.platform)&&/^https:\/\//i.test(v.url));
  empty.hidden=videos.length>0;
@@ -198,6 +198,21 @@ async function initVideoShowcase(){
  dialog.addEventListener('close',()=>frame.replaceChildren());
  dialog.addEventListener('click',e=>{if(e.target===dialog)closeVideo()});
  videos.forEach(v=>{
+   // Reels use Instagram's native embed instead of a faux thumbnail card.
+   if(v.platform==='instagram'){
+     const info=embedInfo(v);
+     const card=document.createElement('article');card.className='video-card instagram-native-card';
+     if(info){
+       const iframe=document.createElement('iframe');iframe.className='instagram-native-embed';
+       iframe.src=info.src;iframe.title=v.title;iframe.loading='lazy';
+       iframe.allow='encrypted-media; picture-in-picture; clipboard-write';
+       iframe.referrerPolicy='strict-origin-when-cross-origin';
+       card.append(iframe);
+     }
+     const link=document.createElement('a');link.className='instagram-native-link';
+     link.href=v.url;link.target='_blank';link.rel='noopener noreferrer';
+     link.textContent='View on Instagram ↗';card.append(link);grid.append(card);return;
+   }
    const card=document.createElement('article');card.className='video-card';
    const button=document.createElement('button');button.type='button';button.className='video-cover'; if(v.platform==='instagram')card.classList.add('video-card-reel');button.setAttribute('aria-label','Play '+v.title);
    if(v.thumbnail){const img=document.createElement('img');img.src=v.thumbnail;img.alt='';img.loading='lazy';button.append(img)}
