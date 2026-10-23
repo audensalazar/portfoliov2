@@ -382,3 +382,9 @@ body:not(.home-page) .cards .card .thumb,
 .video-card-reel .video-cover::before{content:'REEL';position:absolute;top:18px;left:18px;color:#ffe500;font:700 12px 'General Sans',sans-serif;letter-spacing:.13em}
 .video-card-reel .video-cover:hover,.video-card-reel .video-cover:focus-visible{outline:2px solid #2449e8;outline-offset:3px}
 @media(min-width:701px){.video-card-reel .video-cover{max-width:440px}}
+
+/* V17: platform-native Instagram reels and user-provided Vimeo covers */
+.instagram-native-card{align-self:start;min-width:0;display:flex;flex-direction:column;align-items:center}
+.instagram-native-embed{border:0;background:#fff;width:min(100%,440px);height:620px;max-width:100%;border-radius:4px}
+.instagram-native-link{font:500 13px 'General Sans',sans-serif;color:#2449e8;margin-top:12px;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:480px){.instagram-native-embed{height:580px}}
