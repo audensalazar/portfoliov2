@@ -1,6 +1,6 @@
 // Edit projects.json to change project copy, roles, galleries and cover images.
 const e=(name,cls,text)=>{const el=document.createElement(name);if(cls)el.className=cls;if(text!=null)el.textContent=text;return el};
-async function loadProjects(){const response=await fetch('./projects.json?v=10');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
+async function loadProjects(){const response=await fetch('./projects.json?v=11');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
 const createImage=(source,alt,cls)=>{const image=e('img',cls);image.src=source;image.alt=alt||'';image.loading='lazy';return image};
 function roles(p){return Array.isArray(p.roles)?p.roles:(p.role||'').split(',').map(r=>r.trim()).filter(Boolean)}
 function roleTags(p){const tags=e('div','role-tags');tags.setAttribute('aria-label','My roles');roles(p).forEach(role=>tags.append(e('span','role-tag',role)));return tags}
@@ -39,4 +39,17 @@ async function showProjectDetail(){
   if(p.gallery?.length){const gallery=e('section','project-gallery');gallery.append(e('h2','','Selected work'));const media=e('div','gallery-grid');p.gallery.forEach(m=>{const fig=e('figure');if(m.type==='video'&&m.url){const a=e('a','text-link','Watch video ↗');a.href=m.url;a.target='_blank';a.rel='noopener noreferrer';fig.append(a)}else if(m.src){fig.append(createImage(m.src,m.alt||m.caption||p.title))}if(m.caption)fig.append(e('figcaption','',m.caption));media.append(fig)});gallery.append(media);target.append(gallery)}
   if(p.links?.length){const links=e('section','project-links');links.append(e('h2','','Links'));p.links.forEach(l=>{const a=e('a','text-link',l.label+' ↗');a.href=l.url;a.target='_blank';a.rel='noopener noreferrer';links.append(a)});target.append(links)}
  }catch(err){target.textContent='Project could not be loaded. Open this site through GitHub Pages or a local web server.'}
+}
+
+// Accessible photography viewer; works without external libraries.
+function initPhotoGallery(){
+ const modal=document.querySelector('#photo-lightbox');if(!modal)return;
+ const picture=modal.querySelector('img');const count=modal.querySelector('.photo-lightbox-count');
+ const tiles=[...document.querySelectorAll('.photo-tile')];let active=0;
+ const show=(n)=>{active=(n+tiles.length)%tiles.length;const tile=tiles[active];picture.src=tile.dataset.photoSrc;picture.alt=tile.dataset.photoAlt;count.textContent=String(active+1).padStart(2,'0')+' / '+String(tiles.length).padStart(2,'0');};
+ tiles.forEach((tile,index)=>tile.addEventListener('click',()=>{show(index);modal.showModal();}));
+ modal.querySelector('.photo-lightbox-close').addEventListener('click',()=>modal.close());
+ modal.addEventListener('click',event=>{if(event.target===modal)modal.close();});
+ modal.addEventListener('keydown',event=>{if(event.key==='ArrowRight'){event.preventDefault();show(active+1)}if(event.key==='ArrowLeft'){event.preventDefault();show(active-1)}});
+ modal.addEventListener('close',()=>{picture.removeAttribute('src')});
 }

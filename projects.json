@@ -92,9 +92,10 @@
     ],
     "order": 4,
     "featured": true,
-    "cover": "",
+    "cover": "assets/images/social-media-strategy.png",
     "gallery": [],
-    "links": []
+    "links": [],
+    "coverAlt": "Two smartphone mockups featuring Seattle Prep social media posts and Instagram profile"
   },
   {
     "slug": "prep-post",
