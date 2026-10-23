@@ -388,3 +388,18 @@ body:not(.home-page) .cards .card .thumb,
 .instagram-native-embed{border:0;background:#fff;width:min(100%,440px);height:620px;max-width:100%;border-radius:4px}
 .instagram-native-link{font:500 13px 'General Sans',sans-serif;color:#2449e8;margin-top:12px;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:480px){.instagram-native-embed{height:580px}}
+
+/* V18 — cohesive video gallery: films together, portrait Reels in a matched pair */
+.video-grid{display:flex;flex-direction:column;gap:clamp(44px,6vw,80px)}
+.video-films{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:38px 26px;align-items:start}
+.video-films .video-card{min-width:0}
+.video-films .video-card .video-copy h3{line-height:1.22;margin:0}
+.video-platform{display:none!important}
+.video-reels{width:100%;min-width:0}
+.reels-heading{font:400 clamp(26px,3vw,40px)/1.2 'Geist Pixel',monospace;color:#2449e8;margin:0 0 25px}
+.reels-pair{display:grid;grid-template-columns:repeat(2,minmax(0,440px));justify-content:center;align-items:start;gap:clamp(12px,3vw,34px)}
+.reel-card{min-width:0;display:flex;flex-direction:column;align-items:stretch}
+.reel-card .instagram-native-embed{width:100%;height:660px;display:block;max-width:none;box-sizing:border-box;background:#fff;border:0;border-radius:3px}
+.reel-card .instagram-native-link{align-self:flex-start;margin-top:12px}
+@media(max-width:700px){.video-films{grid-template-columns:1fr}.reels-pair{gap:10px}.reel-card .instagram-native-embed{height:520px}.reel-card .instagram-native-link{font-size:11px}}
+@media(max-width:450px){.reels-pair{grid-template-columns:1fr;max-width:420px;margin-inline:auto;gap:30px}.reel-card .instagram-native-embed{height:610px}}

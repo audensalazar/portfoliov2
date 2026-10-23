@@ -57,3 +57,10 @@ Five videos are configured in `videos.json`: one YouTube video, two Vimeo videos
 - Instagram Reels render as native Instagram iframe embeds and retain a link to Instagram as a fallback if third-party embeds are blocked. Instagram controls the content and availability of embeds.
 - Edit video entries in `videos.json`.
 - When deploying, upload `videos.json`, `script.js`, `style.css`, `photography-videography.html`, and the complete `assets/images/video-covers/` folder.
+
+## V18 video updates
+- YouTube video renamed **For Others — The Seattle Prep Experience**.
+- Removed all platform captions.
+- Landscape films are displayed in a consistent two-column gallery.
+- The two Instagram-native Reel players are displayed side-by-side in a dedicated section (single column on narrow phones).
+- Edit video titles and links in `videos.json`. Instagram embeds may be blocked by browser privacy settings; direct links remain below each reel.

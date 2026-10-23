@@ -159,7 +159,7 @@ async function initVideoShowcase(){
  const dialog=document.getElementById('video-dialog');
  if(!grid||!dialog) return;
  let videos=[];
- try { const res=await fetch('videos.json?v=17'); if(res.ok) videos=await res.json(); }catch(_){}
+ try { const res=await fetch('videos.json?v=18'); if(res.ok) videos=await res.json(); }catch(_){}
  const allowed=['youtube','vimeo','instagram'];
  videos=videos.filter(v=>v&&v.title&&v.url&&allowed.includes(v.platform)&&/^https:\/\//i.test(v.url));
  empty.hidden=videos.length>0;
@@ -197,30 +197,26 @@ async function initVideoShowcase(){
  dialog.querySelector('#video-dialog-close').addEventListener('click',closeVideo);
  dialog.addEventListener('close',()=>frame.replaceChildren());
  dialog.addEventListener('click',e=>{if(e.target===dialog)closeVideo()});
+ const films=document.createElement('div');films.className='video-films';
+ const reels=document.createElement('div');reels.className='video-reels';
+ const reelsHeading=document.createElement('h3');reelsHeading.className='reels-heading';reelsHeading.textContent='Short-form storytelling';
+ const reelsPair=document.createElement('div');reelsPair.className='reels-pair';
  videos.forEach(v=>{
-   // Reels use Instagram's native embed instead of a faux thumbnail card.
    if(v.platform==='instagram'){
      const info=embedInfo(v);
-     const card=document.createElement('article');card.className='video-card instagram-native-card';
-     if(info){
-       const iframe=document.createElement('iframe');iframe.className='instagram-native-embed';
-       iframe.src=info.src;iframe.title=v.title;iframe.loading='lazy';
-       iframe.allow='encrypted-media; picture-in-picture; clipboard-write';
-       iframe.referrerPolicy='strict-origin-when-cross-origin';
-       card.append(iframe);
-     }
-     const link=document.createElement('a');link.className='instagram-native-link';
-     link.href=v.url;link.target='_blank';link.rel='noopener noreferrer';
-     link.textContent='View on Instagram ↗';card.append(link);grid.append(card);return;
+     const card=document.createElement('article');card.className='reel-card';
+     if(info){const iframe=document.createElement('iframe');iframe.className='instagram-native-embed';iframe.src=info.src;iframe.title=v.title;iframe.loading='lazy';iframe.allow='encrypted-media; picture-in-picture; clipboard-write';iframe.referrerPolicy='strict-origin-when-cross-origin';card.append(iframe)}
+     const link=document.createElement('a');link.className='instagram-native-link';link.href=v.url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='View on Instagram ↗';card.append(link);reelsPair.append(card);return;
    }
    const card=document.createElement('article');card.className='video-card';
-   const button=document.createElement('button');button.type='button';button.className='video-cover'; if(v.platform==='instagram')card.classList.add('video-card-reel');button.setAttribute('aria-label','Play '+v.title);
+   const button=document.createElement('button');button.type='button';button.className='video-cover';button.setAttribute('aria-label','Play '+v.title);
    if(v.thumbnail){const img=document.createElement('img');img.src=v.thumbnail;img.alt='';img.loading='lazy';button.append(img)}
    const play=document.createElement('span');play.className='video-play';play.textContent='▶';button.append(play);
-   const copy=document.createElement('div');copy.className='video-copy';
-   const h=document.createElement('h3');h.textContent=v.title;copy.append(h);
+   const copy=document.createElement('div');copy.className='video-copy';const h=document.createElement('h3');h.textContent=v.title;copy.append(h);
    if(v.description){const description=document.createElement('p');description.textContent=v.description;copy.append(description)}
-   const source=document.createElement('span');source.className='video-platform';source.textContent=v.platform==='youtube'?'YouTube':v.platform==='vimeo'?'Vimeo':'Instagram Reel';copy.append(source);
-   button.addEventListener('click',()=>openVideo(v));card.append(button,copy);grid.append(card);
+   button.addEventListener('click',()=>openVideo(v));card.append(button,copy);films.append(card);
  });
+ if(films.children.length)grid.append(films);
+ if(reelsPair.children.length){reels.append(reelsHeading,reelsPair);grid.append(reels)};
+
 }
