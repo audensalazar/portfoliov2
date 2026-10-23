@@ -50,3 +50,11 @@ Role labels now appear as filled blue chips immediately below each project image
 - Note: if an image itself contains opaque dark pixels, CSS cannot remove those pixels; the PNG needs editing.
 - To deploy, upload the **contents** of this ZIP to the repository root, replacing matching files.
 - Content remains editable in `projects.json`; image paths use `assets/images/`.
+
+
+## v7 project-grid updates
+- Cards now show images, titles, descriptions, and then role tags (in that order).
+- Cards subtly lift and images scale on mouse hover; reduced-motion preferences are respected.
+- A responsive 3/2/1 column grid keeps cards aligned.
+- Replace or upload images to `assets/images/` and update each entry's `cover` in `projects.json`. The newer images sent inline in chat were not available for inclusion in this ZIP; current images are retained.
+- Upload **all** extracted files to GitHub since HTML, JavaScript and CSS changed.

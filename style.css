@@ -200,3 +200,26 @@ body:not(.home-page) .cards .card .thumb,
 @media(max-width:540px) {
  .topbar .nav, body.home-page .topbar .nav, body:not(.home-page) .topbar .nav {width:88%;}
 }
+
+
+/* v7: unified project cards — image, title, description, role tags */
+.cards {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(22px,2.8vw,38px);align-items:stretch;}
+.cards .card {display:flex;flex-direction:column;min-width:0;height:100%;border-radius:13px;padding:12px; margin:-12px; position:relative; isolation:isolate; transition:transform .28s cubic-bezier(.2,.8,.2,1), background-color .28s ease, box-shadow .28s ease;}
+.cards .card .project-card-link {order:0;display:block;}
+.cards .card .project-card-copy {order:1;display:block;padding-top:4px;}
+.cards .card .project-card-copy h3 {margin:12px 0 9px;transition:color .2s ease;}
+.cards .card .project-card-copy p {margin:0;line-height:1.6;}
+.cards .card .role-tags {order:2!important;display:flex!important;flex-wrap:wrap!important;align-content:flex-start;gap:8px!important;margin:18px 0 0!important;padding-top:0;visibility:visible!important;opacity:1!important;}
+.cards .card .role-tag {background:#2449e8!important;color:white!important;max-width:100%;border-radius:999px!important;}
+.cards .card .thumb {overflow:hidden;border-radius:9px;transform:translateZ(0);transition:transform .33s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease!important;}
+.cards .card .thumb img {transition:transform .4s cubic-bezier(.2,.8,.2,1);}
+@media(hover:hover) and (pointer:fine){
+ .cards .card:hover {transform:translateY(-7px);background-color:rgba(255,255,255,.17);box-shadow:0 13px 30px rgba(20,30,80,.09);}
+ .cards .card:hover .thumb img {transform:scale(1.035) rotate(-.4deg);}
+ .cards .card:hover .project-card-copy h3 {color:#2449e8;text-decoration:underline;text-underline-offset:5px;}
+ .cards .card:hover .thumb {box-shadow:0 8px 22px rgba(16,29,84,.12)!important;}
+}
+.cards .card:focus-within {outline:2px solid #2449e8;outline-offset:6px;}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:600px){.cards{grid-template-columns:1fr;gap:34px;}.cards .card{margin:0;padding:0;}}
+@media(prefers-reduced-motion:reduce){.cards .card,.cards .card .thumb,.cards .card .thumb img,.cards .card h3{transition:none!important;transform:none!important;}}
