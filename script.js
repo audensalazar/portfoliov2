@@ -199,8 +199,8 @@ async function initVideoShowcase(){
  dialog.addEventListener('click',e=>{if(e.target===dialog)closeVideo()});
  const films=document.createElement('div');films.className='video-films';
  const reels=document.createElement('div');reels.className='video-reels';
- const reelsHeading=document.createElement('h3');reelsHeading.className='reels-heading';reelsHeading.textContent='Short-form storytelling';
- const reelsPair=document.createElement('div');reelsPair.className='reels-pair';const reelsIntro=document.createElement('p');reelsIntro.className='reels-description';reelsIntro.textContent='Utilizing social media to highlight campus moments and promote special events.';
+ const reelsHeading=document.createElement('h3');reelsHeading.className='reels-heading';reelsHeading.textContent='Bite-sized stories';
+ const reelsPair=document.createElement('div');reelsPair.className='reels-pair';const reelsIntro=document.createElement('p');reelsIntro.className='reels-description';reelsIntro.textContent='Creating content that reaches';
  videos.forEach(v=>{
    if(v.platform==='instagram'){
      const info=embedInfo(v);
