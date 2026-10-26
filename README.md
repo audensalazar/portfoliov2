@@ -78,3 +78,11 @@ Five videos are configured in `videos.json`: one YouTube video, two Vimeo videos
 - Removed the photography “Through my lens” heading and caption entirely.
 - Navbar now uses the same responsive left and right margins as `.wrap` content on every page.
 - Bumped CSS/JS query versions to v20 to avoid stale browser CSS.
+
+
+## Version 21 — Copy updates
+Updated from the user's annotated copy worksheet. Fields left blank in the worksheet retain their prior text. Panther Tracks now includes two external article buttons; the Instagram Reels have descriptive titles. Edit `projects.json` and `videos.json` for future project and video changes.
+
+
+## Version 22 exact copy update
+Uses the user-edited October 25 PDF literally (including Dorthea Lange spelling and capitalization). Quote authors appear below quotes as General Sans captions. Blank replacement fields were not treated as requests to change text.

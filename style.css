@@ -443,3 +443,7 @@ body:not(.home-page) .cards .card .thumb,
 /* Version 21 editorial revisions */
 .photo-stack-heading{font-family:var(--font-header, sans-serif);color:var(--framer-blue,#2449e8);font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.2;margin:0 0 28px}
 .project-links{margin:2rem 0 1rem}.project-links a.text-link{display:inline-flex;align-items:center;justify-content:center;text-align:center;border:1px solid var(--framer-blue,#2449e8);color:var(--framer-blue,#2449e8);padding:.8rem 1.15rem;border-radius:999px;margin:8px 10px 8px 0;font-family:var(--font-caption,sans-serif);font-size:.9rem;text-decoration:none;transition:background .2s,color .2s}.project-links a.text-link:hover,.project-links a.text-link:focus-visible{background:var(--framer-blue,#2449e8);color:#fff}
+
+/* v22: quote author is an unobtrusive General Sans caption */
+.page-header .quote-attribution { font-family:var(--font-caption, "General Sans", sans-serif) !important; color:var(--ink); font-size:clamp(13px,1.05vw,16px) !important; font-weight:500; line-height:1.45; letter-spacing:.015em; margin:8px 0 22px; max-width:none; }
+.page-header h1:has(+ .quote-attribution) { margin-bottom:0 !important; }
