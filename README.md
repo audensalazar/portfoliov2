@@ -94,3 +94,7 @@ Uses the user-edited October 25 PDF literally (including Dorthea Lange spelling 
 - Section subheads use title case, including **I’m Good Friends with a Lens**, **Mission in Motion**, and **Bite-Sized Stories**.
 - Divider rules above section headings on the homepage, Design, Writing, and Photography/Videography pages removed. Navigation bottom rule also removed.
 - Existing quote copy/attribution styling, all media, links, and project data retained.
+
+
+## Version 24 updates
+Section subheadings display in uppercase. The Reels section uses the latest editing sheet: “Bite-sized stories” and “Creating content that reaches”.

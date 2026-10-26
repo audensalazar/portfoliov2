@@ -454,3 +454,6 @@ body.home-page .section-head, body:not(.home-page) .section-head { border-top:0 
 .topbar {border-bottom:0 !important;}
 /* Capitalize visible section subheads without altering quotes, body paragraphs or project names. */
 .section-head h2, .photo-stack-heading, .photo-exhibit-heading h2, .reels-heading, .project-copy h2, .project-links h2, .project-gallery h2 {text-transform:capitalize;}
+
+/* Version 24 — section subheads use all-caps display, without altering quoted copy or project titles */
+.section-head h2, .photo-stack-heading, .photo-exhibit-heading h2, .reels-heading, .project-copy h2, .project-links h2, .project-gallery h2 { text-transform: uppercase !important; }
