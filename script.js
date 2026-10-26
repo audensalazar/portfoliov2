@@ -1,6 +1,6 @@
 // Edit projects.json to change project copy, roles, galleries and cover images.
 const e=(name,cls,text)=>{const el=document.createElement(name);if(cls)el.className=cls;if(text!=null)el.textContent=text;return el};
-async function loadProjects(){const response=await fetch('./projects.json?v=19');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
+async function loadProjects(){const response=await fetch('./projects.json?v=22');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
 const createImage=(source,alt,cls)=>{const image=e('img',cls);image.src=source;image.alt=alt||'';image.loading='lazy';return image};
 function roles(p){return Array.isArray(p.roles)?p.roles:(p.role||'').split(',').map(r=>r.trim()).filter(Boolean)}
 function roleTags(p){const tags=e('div','role-tags');tags.setAttribute('aria-label','My roles');roles(p).forEach(role=>tags.append(e('span','role-tag',role)));return tags}
