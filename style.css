@@ -457,3 +457,22 @@ body.home-page .section-head, body:not(.home-page) .section-head { border-top:0 
 
 /* Version 24 — section subheads use all-caps display, without altering quoted copy or project titles */
 .section-head h2, .photo-stack-heading, .photo-exhibit-heading h2, .reels-heading, .project-copy h2, .project-links h2, .project-gallery h2 { text-transform: uppercase !important; }
+
+/* v25 — blue page wipe; non-interactive overlay, no card or tag interference */
+.page-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+  background: #2449e8;
+  transform: translateX(-101%);
+  visibility: hidden;
+}
+.page-wipe--active {
+  visibility: visible;
+  transition: transform 320ms cubic-bezier(.76, 0, .24, 1);
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-wipe--active { transition: none; }
+}
