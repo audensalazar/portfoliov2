@@ -1,6 +1,6 @@
 // Edit projects.json to change project copy, roles, galleries and cover images.
 const e=(name,cls,text)=>{const el=document.createElement(name);if(cls)el.className=cls;if(text!=null)el.textContent=text;return el};
-async function loadProjects(){const response=await fetch('./projects.json?v=22');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
+async function loadProjects(){const response=await fetch('./projects.json?v=25');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
 const createImage=(source,alt,cls)=>{const image=e('img',cls);image.src=source;image.alt=alt||'';image.loading='lazy';return image};
 function roles(p){return Array.isArray(p.roles)?p.roles:(p.role||'').split(',').map(r=>r.trim()).filter(Boolean)}
 function roleTags(p){const tags=e('div','role-tags');tags.setAttribute('aria-label','My roles');roles(p).forEach(role=>tags.append(e('span','role-tag',role)));return tags}
@@ -220,3 +220,34 @@ async function initVideoShowcase(){
  if(reelsPair.children.length){reels.append(reelsHeading,reelsIntro,reelsPair);grid.append(reels)};
 
 }
+
+
+/* v25 — lightweight internal-page blue wipe; respects reduced motion. */
+(() => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.addEventListener('DOMContentLoaded', () => {
+    const curtain = document.createElement('div');
+    curtain.className = 'page-wipe';
+    curtain.setAttribute('aria-hidden', 'true');
+    document.body.append(curtain);
+    let navigating = false;
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest?.('a[href]');
+      if (!link || event.defaultPrevented || navigating || event.button !== 0 ||
+          event.metaKey || event.ctrlKey || event.shiftKey || event.altKey ||
+          link.target && link.target !== '_self' || link.hasAttribute('download')) return;
+      const dest = new URL(link.href, location.href);
+      const sameDocument = dest.pathname === location.pathname && dest.search === location.search;
+      if (dest.origin !== location.origin || (sameDocument && dest.hash) ||
+          (sameDocument && !dest.hash) || !/\.html$/i.test(dest.pathname) || reduced.matches) return;
+      event.preventDefault();
+      navigating = true;
+      curtain.classList.add('page-wipe--active');
+      window.setTimeout(() => { window.location.assign(dest.href); }, 340);
+    });
+    window.addEventListener('pageshow', () => {
+      navigating = false;
+      curtain.classList.remove('page-wipe--active');
+    });
+  });
+})();
