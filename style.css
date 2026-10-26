@@ -447,3 +447,10 @@ body:not(.home-page) .cards .card .thumb,
 /* v22: quote author is an unobtrusive General Sans caption */
 .page-header .quote-attribution { font-family:var(--font-caption, "General Sans", sans-serif) !important; color:var(--ink); font-size:clamp(13px,1.05vw,16px) !important; font-weight:500; line-height:1.45; letter-spacing:.015em; margin:8px 0 22px; max-width:none; }
 .page-header h1:has(+ .quote-attribution) { margin-bottom:0 !important; }
+
+/* V23 — Main-page section headings without separator rules. */
+body.home-page .section-head, body:not(.home-page) .section-head { border-top:0 !important; padding-top:0 !important; }
+/* Also remove the horizontal frame rule above the main navigation; retain project metadata separators. */
+.topbar {border-bottom:0 !important;}
+/* Capitalize visible section subheads without altering quotes, body paragraphs or project names. */
+.section-head h2, .photo-stack-heading, .photo-exhibit-heading h2, .reels-heading, .project-copy h2, .project-links h2, .project-gallery h2 {text-transform:capitalize;}

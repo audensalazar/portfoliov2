@@ -86,3 +86,11 @@ Updated from the user's annotated copy worksheet. Fields left blank in the works
 
 ## Version 22 exact copy update
 Uses the user-edited October 25 PDF literally (including Dorthea Lange spelling and capitalization). Quote authors appear below quotes as General Sans captions. Blank replacement fields were not treated as requests to change text.
+
+
+## Version 23 — copy and heading cleanup
+- Homepage introduction: **who crafts** (per revised worksheet).
+- Writing introduction: **Telling good stories with only 26 letters, genuine curiosity, and a few numbers.**
+- Section subheads use title case, including **I’m Good Friends with a Lens**, **Mission in Motion**, and **Bite-Sized Stories**.
+- Divider rules above section headings on the homepage, Design, Writing, and Photography/Videography pages removed. Navigation bottom rule also removed.
+- Existing quote copy/attribution styling, all media, links, and project data retained.
