@@ -12,33 +12,42 @@
     "tools": "Microsoft Word, OneDrive, Adobe Illustrator, Canon EOS 6D, Countless Notebooks",
     "summary": "Writing, photography, and production for Seattle Prep’s annual alumni and community magazine.",
     "paragraphs": [
-      "In mid-2023, I worked on my first issue of Panther Tracks — Seattle Prep’s annual community and alumni magazine. Since then, I’ve contributed to four issues. From writing alumni features, student profiles, institutional triumphs each year to capturing, organizing, and identifying the right imagery that effectively told Seattle Prep’s story. It truly became a labor of love.",
-      "Diving headfirst into production when I first began at Seattle Prep, two things happened. One, I strengthened my skills as a writer. Until this point, I typically wrote in academic contexts. Now, my sentences would grace the mailboxes and coffee tables of over 10,000 alumni, donors, and families. Slightly frightened at that thought, I was also energized to tell the stories of Seattle Prep with accuracy and meaning.",
-      "Read my favorite pieces from our most recent issue here!"
+      "My first issue of Panther Tracks — Seattle Prep’s annual community and alumni magazine — was published in Summer 2023. Since then, I’ve contributed to four issues. From writing alumni features and student profiles to capturing, organizing, and identifying the right imagery that effectively tells the Prep story. It’s a labor of love.",
+      "Through this work; two things happened. One, I strengthened my skills as a writer. Until this project, I’ve only written in academic contexts. Now, my sentences grace the mailboxes and coffee tables of over 10,000 alumni, donors, and families.",
+      "Read my favorite pieces from our most recent issue below!"
     ],
     "order": 1,
     "featured": true,
     "cover": "assets/images/PantherTracks2026MockUp.png",
     "gallery": [],
-    "links": [],
+    "links": [
+      {
+        "label": "Double Dare — Competitors to Collaborators",
+        "url": "https://drive.google.com/file/d/1lKWtSEuocxeZuBW_GLOpQX5nSSr9ax9q/view?usp=drivesdk"
+      },
+      {
+        "label": "Comparing Apples to Salmon",
+        "url": "https://drive.google.com/file/d/1S-WoqMq7i1ulsqg6h3gfO38tHUgG457D/view?usp=drivesdk"
+      }
+    ],
     "coverAlt": "Panther Tracks magazine cover and editorial spread"
   },
   {
     "slug": "alumni-week-branding",
-    "title": "Alumni Week Branding",
+    "title": "Alumni Week Brand Identity",
     "categories": [
       "design",
       "photography-videography"
     ],
     "primary": "design",
-    "timeline": "2023–Present",
+    "timeline": "Spring 2025 - Present",
     "role": "Graphic Design, Photography, Project/Vendor Management",
     "tools": "Adobe Illustrator/InDesign, Canon EOS 6D, MailChimp",
     "summary": "A refreshed Alumni Week identity brought to life across print, web, and digital communications.",
     "paragraphs": [
       "Engaging alumni is paramount to a healthy and robust school community. To that end, I made a consistent effort to build relationships with alumni. Be that the Gen Z recent grads to the Baby Boomers that saw the Seattle tech boom take place.",
-      "Using insights gained from connections, I aided the Assistant Director of Alumni Engagement in revamping Seattle Prep’s Alumni Week.",
-      "Flexing my graphic design skills, we collaborated to develop a fresh brand identity to promote various events and opportunities to reconnect alumni with Seattle Prep. Through Direct Mail postcards, an updated website, and digital collateral, we’ve achieved a refreshed Alumni Base that get excited for our events."
+      "Using those relationships and insights, I aided the Assistant Director of Alumni Engagement in revamping Seattle Prep’s annual initiative — Alumni Week.",
+      "Flexing my graphic design skills, we collaborated to develop a fresh brand identity to promote various events and opportunities to reconnect alumni with the school. Through Direct Mail postcards, an updated website, and digital collateral, alumni are not only aware of the various events, but excited to attend as well."
     ],
     "order": 2,
     "featured": true,
@@ -49,19 +58,19 @@
   },
   {
     "slug": "admissions-communications-marketing",
-    "title": "Admissions Communications and Marketing",
+    "title": "THINK PREP! Seattle Prep’s Admissions Campaign",
     "categories": [
       "design",
       "writing",
       "photography-videography"
     ],
     "primary": "design",
-    "timeline": "2023–Present",
+    "timeline": "Fall 2026",
     "role": "Graphic Design, Writing, Email Marketing, Photography, Video Production, Project/Vendor Management",
     "tools": "Adobe Illustrator, Adobe Premiere Pro, Canon EOS 6D, Canon R6 Mark II, iPhone, CapCut, Finalsite Messages, MailChimp, Veracross",
     "summary": "Integrated admissions campaigns, print design, storytelling, and video built around THINK PREP.",
     "paragraphs": [
-      "Seattle’s is home to a competitive independent school market. Thus, a major factor in my work is crafting campaign strategies and tactics that allow our admissions office to stand out and spark curiosity among prospective families and students.",
+      "Seattle is home to a competitive independent school market. Thus, a major factor in my work is crafting campaign strategies and tactics that allow our admissions office to stand out and spark curiosity among prospective families and students.",
       "Seattle Prep’s current campaign encourages those families and students to consider why the school’s approach to education rooted in the Jesuit paradigm is worth our tuition in the age of AI — THINK PREP!",
       "My work with admissions spans from inquiry to enrollment. Designing postcards, posters, and brochures for Open House, ideating and executing long and short-form video projects that highlight the school’s differentiators, and composing email campaigns that reassure the decision to enroll."
     ],
@@ -112,9 +121,9 @@
     "metric": "80% average open rate",
     "paragraphs": [
       "At 7, my first email account was with Yahoo Mail. I remember the excitement in receiving mail in the almost archaic platform from my favorite cousin, Paty, who had just moved to Utah.",
-      "Believe it or not, I still carry that child-like excitement for email.",
-      "Every Monday during the academic year, I produce Seattle Prep’s weekly newsletter, Prep Post. My process, more so a ritual, grants me the chance to connect with the entire school community. Faculty and staff alert me of noteworthy material, and I synthesize the past week and week ahead in a reliable and readable digital news resource.",
-      "Since Prep Post fell under my direction, I’ve maintained an 80% percent open rate on average, with click-through rates varying dependent on content of the week."
+      "Believe it or not, I still carry that child-like excitement for writing emails.",
+      "Every Monday during the academic year, I produce Seattle Prep’s weekly newsletter, Prep Post. My process, more so a ritual, grants me the chance to connect with the school’s entire community. Faculty, staff, and administration alert me of noteworthy material, and I synthesize it into a reliable and readable digital news resource.",
+      "Since Prep Post fell under my direction, I’ve maintained an 80% open rate on average."
     ],
     "order": 5,
     "featured": true,
