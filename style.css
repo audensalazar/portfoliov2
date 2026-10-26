@@ -458,21 +458,31 @@ body.home-page .section-head, body:not(.home-page) .section-head { border-top:0 
 /* Version 24 — section subheads use all-caps display, without altering quoted copy or project titles */
 .section-head h2, .photo-stack-heading, .photo-exhibit-heading h2, .reels-heading, .project-copy h2, .project-links h2, .project-gallery h2 { text-transform: uppercase !important; }
 
-/* v25 — blue page wipe; non-interactive overlay, no card or tag interference */
-.page-wipe {
+/* v26 — one continuous blue wipe: exit covers, entrance uncovers.
+   The incoming page starts covered before CSS paint, avoiding a visible jump. */
+html::after {
+  content: "";
   position: fixed;
   inset: 0;
-  z-index: 99999;
+  z-index: 2147483647;
   pointer-events: none;
   background: #2449e8;
-  transform: translateX(-101%);
+  transform: translate3d(-101%, 0, 0);
+  will-change: transform;
   visibility: hidden;
 }
-.page-wipe--active {
-  visibility: visible;
-  transition: transform 320ms cubic-bezier(.76, 0, .24, 1);
-  transform: translateX(0);
+html.page-transition-out::after,
+html.page-transition-in::after { visibility: visible; }
+html.page-transition-out::after {
+  transform: translate3d(0, 0, 0);
+  transition: transform 450ms cubic-bezier(.76, 0, .24, 1);
+}
+html.page-transition-in::after { transform: translate3d(0, 0, 0); }
+html.page-transition-in.page-transition-reveal::after {
+  transform: translate3d(101%, 0, 0);
+  transition: transform 450ms cubic-bezier(.76, 0, .24, 1);
 }
 @media (prefers-reduced-motion: reduce) {
-  .page-wipe--active { transition: none; }
+  html.page-transition-out::after,
+  html.page-transition-in::after { visibility: hidden !important; transition: none !important; }
 }
