@@ -104,3 +104,7 @@ Section subheadings display in uppercase. The Reels section uses the latest edit
 - THINK PREP! is no longer listed on Writing; it remains on Design and Photography/Videography.
 - Internal page navigation uses a quick cobalt-blue wipe. Reduced-motion preferences skip it.
 - Update all HTML, `script.js`, `style.css`, and `projects.json` together.
+
+
+## v26 navigation animation
+A coordinated 450ms outbound blue wipe and 450ms inbound reveal. The arrival page is covered before paint to avoid a jump. Honors prefers-reduced-motion and resets on browser Back/Forward cache restores.

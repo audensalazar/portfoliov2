@@ -222,32 +222,58 @@ async function initVideoShowcase(){
 }
 
 
-/* v25 — lightweight internal-page blue wipe; respects reduced motion. */
+/* v26 — coordinated exit and entrance for full-page navigation. */
 (() => {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const key = 'auden-page-transition';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const root = document.documentElement;
+  let navigating = false;
+  let destinationTimer;
+
+  function clearTransition() {
+    root.classList.remove('page-transition-out', 'page-transition-in', 'page-transition-reveal');
+    navigating = false;
+    window.clearTimeout(destinationTimer);
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
-    const curtain = document.createElement('div');
-    curtain.className = 'page-wipe';
-    curtain.setAttribute('aria-hidden', 'true');
-    document.body.append(curtain);
-    let navigating = false;
+    // The destination page gets its covered state from the early head script,
+    // preventing a flash of the next page before the entrance animation.
+    if (root.classList.contains('page-transition-in') && !reduceMotion.matches) {
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        root.classList.add('page-transition-reveal');
+        window.setTimeout(() => {
+          root.classList.remove('page-transition-in', 'page-transition-reveal');
+        }, 520);
+      }));
+    } else {
+      root.classList.remove('page-transition-in');
+    }
+
     document.addEventListener('click', (event) => {
       const link = event.target.closest?.('a[href]');
       if (!link || event.defaultPrevented || navigating || event.button !== 0 ||
           event.metaKey || event.ctrlKey || event.shiftKey || event.altKey ||
-          link.target && link.target !== '_self' || link.hasAttribute('download')) return;
+          (link.target && link.target !== '_self') || link.hasAttribute('download')) return;
       const dest = new URL(link.href, location.href);
-      const sameDocument = dest.pathname === location.pathname && dest.search === location.search;
-      if (dest.origin !== location.origin || (sameDocument && dest.hash) ||
-          (sameDocument && !dest.hash) || !/\.html$/i.test(dest.pathname) || reduced.matches) return;
+      const samePage = dest.pathname === location.pathname && dest.search === location.search;
+      if (dest.origin !== location.origin || samePage ||
+          !/\.html$/i.test(dest.pathname) || reduceMotion.matches) return;
       event.preventDefault();
       navigating = true;
-      curtain.classList.add('page-wipe--active');
-      window.setTimeout(() => { window.location.assign(dest.href); }, 340);
-    });
-    window.addEventListener('pageshow', () => {
-      navigating = false;
-      curtain.classList.remove('page-wipe--active');
+      root.classList.remove('page-transition-in', 'page-transition-reveal');
+      root.classList.add('page-transition-out');
+      // Navigate only once the outgoing wipe has fully covered the page.
+      destinationTimer = window.setTimeout(() => {
+        try { sessionStorage.setItem(key, JSON.stringify({ url: dest.pathname + dest.search, at: Date.now() })); } catch (_) {}
+        location.assign(dest.href);
+      }, 465);
     });
   });
+
+  // Browsers may restore a page from back-forward cache without loading JS again.
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) clearTransition();
+  });
+  window.addEventListener('pagehide', () => window.clearTimeout(destinationTimer));
 })();
