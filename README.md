@@ -111,3 +111,6 @@ A coordinated 450ms outbound blue wipe and 450ms inbound reveal. The arrival pag
 
 
 V27: Adds blue portrait to homepage; temporary blue portrait on About page until separately provided passport cutout becomes accessible. Replace about.html image src with passport image when received. Photography spacing tightened.
+
+
+V28: Corrected About page missing script.js (which caused page transition freeze), included actual passportme PNG on About, set homepage hero gap to zero, added transition failsafe and adjusted About layout.
