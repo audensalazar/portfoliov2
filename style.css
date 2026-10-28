@@ -486,3 +486,28 @@ html.page-transition-in.page-transition-reveal::after {
   html.page-transition-out::after,
   html.page-transition-in::after { visibility: hidden !important; transition: none !important; }
 }
+
+/* V27: Portrait layouts and intentional spacing. */
+.home-page .hero { display:grid;grid-template-columns:minmax(0,1.25fr) minmax(240px,.75fr);gap:clamp(24px,4vw,72px);align-items:end;padding-top:clamp(64px,8vw,125px);padding-bottom:0;min-height:clamp(420px,47vw,690px); }
+.home-page .hero-copy {align-self:center;min-width:0;padding-bottom:clamp(12px,3vw,52px)}
+.home-page .hero h1 {max-width:810px;}
+.home-page .hero p {max-width:660px;}
+.home-page .hero-portrait {align-self:end;display:flex;justify-content:center;min-width:0;overflow:hidden;}
+.home-page .hero-portrait img {display:block;width:min(100%,490px);height:auto;max-height:620px;object-fit:contain;object-position:bottom;animation:portrait-rise .8s cubic-bezier(.2,.7,.2,1) both;}
+@keyframes portrait-rise {from {opacity:0;transform:translateY(22px)} to {opacity:1;transform:translateY(0)}}
+.about-grid {grid-template-columns:minmax(230px,.85fr) minmax(0,1.15fr);gap:clamp(22px,4vw,70px);align-items:center;padding-bottom:clamp(40px,6vw,85px);}
+.about-portrait{margin:0;align-self:end;display:flex;align-items:end;justify-content:center;min-width:0;}
+.about-portrait img{display:block;width:100%;max-width:470px;height:auto;max-height:660px;object-fit:contain;object-position:bottom;}
+/* Photography — eliminate overly generous empty bands between related content. */
+body:has(.photo-stack-exhibit) .page-header{padding-top:clamp(35px,5vw,75px);padding-bottom:clamp(15px,2.4vw,35px);}
+body:has(.photo-stack-exhibit) .page-header h1{margin-top:15px;}
+.photo-stack-exhibit{margin:12px 0 clamp(36px,5vw,65px)!important;}
+.photo-stack-heading{margin:0 0 clamp(16px,2vw,26px)!important;}
+.photo-stack-layout{gap:clamp(18px,3vw,36px);}
+.video-showcase{margin:clamp(30px,4vw,55px) 0 clamp(35px,5vw,65px)!important;}
+.photo-exhibit-heading{margin-bottom:clamp(16px,2vw,24px)!important;gap:6px!important;}
+.photo-exhibit-heading h2,.photo-exhibit-heading p{margin:0;}
+body:has(.photo-stack-exhibit) .section{padding-top:clamp(35px,5vw,64px);}
+@media(max-width:900px){.home-page .hero{grid-template-columns:minmax(0,1.1fr) minmax(180px,.9fr);min-height:0;gap:20px;padding-top:65px}.home-page .hero-portrait img{max-height:480px}.about-grid{grid-template-columns:1fr 1.25fr;gap:24px}}
+@media(max-width:650px){.home-page .hero{grid-template-columns:1fr;padding-top:50px;gap:0}.home-page .hero-copy{padding-bottom:10px}.home-page .hero-portrait{justify-content:center;max-height:400px}.home-page .hero-portrait img{width:min(75%,350px);max-height:400px}.home-page .home-work{padding-top:30px;padding-bottom:65px}.about-grid{grid-template-columns:1fr}.about-portrait{justify-content:flex-start}.about-portrait img{max-width:330px}.photo-stack-exhibit{margin-top:10px!important;}}
+@media(prefers-reduced-motion:reduce){.home-page .hero-portrait img{animation:none;}}
