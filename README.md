@@ -108,3 +108,6 @@ Section subheadings display in uppercase. The Reels section uses the latest edit
 
 ## v26 navigation animation
 A coordinated 450ms outbound blue wipe and 450ms inbound reveal. The arrival page is covered before paint to avoid a jump. Honors prefers-reduced-motion and resets on browser Back/Forward cache restores.
+
+
+V27: Adds blue portrait to homepage; temporary blue portrait on About page until separately provided passport cutout becomes accessible. Replace about.html image src with passport image when received. Photography spacing tightened.
