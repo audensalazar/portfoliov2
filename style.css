@@ -511,3 +511,18 @@ body:has(.photo-stack-exhibit) .section{padding-top:clamp(35px,5vw,64px);}
 @media(max-width:900px){.home-page .hero{grid-template-columns:minmax(0,1.1fr) minmax(180px,.9fr);min-height:0;gap:20px;padding-top:65px}.home-page .hero-portrait img{max-height:480px}.about-grid{grid-template-columns:1fr 1.25fr;gap:24px}}
 @media(max-width:650px){.home-page .hero{grid-template-columns:1fr;padding-top:50px;gap:0}.home-page .hero-copy{padding-bottom:10px}.home-page .hero-portrait{justify-content:center;max-height:400px}.home-page .hero-portrait img{width:min(75%,350px);max-height:400px}.home-page .home-work{padding-top:30px;padding-bottom:65px}.about-grid{grid-template-columns:1fr}.about-portrait{justify-content:flex-start}.about-portrait img{max-width:330px}.photo-stack-exhibit{margin-top:10px!important;}}
 @media(prefers-reduced-motion:reduce){.home-page .hero-portrait img{animation:none;}}
+
+/* V28 — remove homepage hero column gap; restore mobile-safe spacing. */
+.home-page .hero { gap: 0 !important; column-gap: 0 !important; }
+/* Keep About's two-column content together with the passport art opposite the text. */
+.about-grid { grid-template-columns: minmax(240px,.85fr) minmax(0,1.15fr); align-items: center; }
+.about-grid > .large-type { grid-column: 2; grid-row: 1; align-self: end; }
+.about-grid > div:last-child { grid-column: 2; grid-row: 2; align-self: start; }
+.about-portrait { grid-column: 1; grid-row: 1 / span 2; align-self: center; }
+.about-portrait img { max-width: 100%; max-height: none; }
+@media (max-width: 760px) {
+ .about-grid { grid-template-columns: 1fr; }
+ .about-grid > .large-type, .about-grid > div:last-child, .about-portrait { grid-column: 1; grid-row: auto; }
+ .about-portrait { max-width: 440px; margin-inline: auto; }
+ .home-page .hero { row-gap: 0 !important; }
+}

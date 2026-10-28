@@ -275,5 +275,11 @@ async function initVideoShowcase(){
   window.addEventListener('pageshow', (event) => {
     if (event.persisted) clearTransition();
   });
+  window.addEventListener('load', () => {
+    if (root.classList.contains('page-transition-in')) {
+      root.classList.add('page-transition-reveal');
+      window.setTimeout(clearTransition, 650);
+    }
+  });
   window.addEventListener('pagehide', () => window.clearTimeout(destinationTimer));
 })();
