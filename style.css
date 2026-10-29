@@ -551,3 +551,34 @@ body:has(.photo-stack-exhibit) .section{padding-top:clamp(35px,5vw,64px);}
 @media(max-width:700px){.reels-pair{grid-template-columns:repeat(2,minmax(0,1fr))}.reel-gif-link{aspect-ratio:9/16}}
 @media(max-width:450px){.reels-pair{grid-template-columns:1fr;max-width:360px}.project-lightbox{padding:55px 10px 20px}.project-lightbox-controls{gap:8px}.project-lightbox-controls button{padding:8px 10px}}
 @media(prefers-reduced-motion:reduce){.reel-gif-link img,.about-grid .contact-button{transition:none}}
+
+/* Version 30: improved editorial leading, image navigation, hero overlay and admissions photo pair */
+:root{--tight-body-leading:1.42}
+body p,.page-header p,.hero p,.project-copy p,.project-detail p,.card p,.about-grid p,.photo-exhibit-heading p{line-height:var(--tight-body-leading)!important}
+.hero h1,.page-header h1,.project-title,.section-head h2{line-height:1.07!important}
+.topbar .navlinks.nav-image-links{display:flex;align-items:center;gap:clamp(9px,1.4vw,20px);flex-wrap:nowrap}
+.topbar .nav-image-link{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;text-decoration:none!important;white-space:nowrap;font-size:clamp(10px,.85vw,13px)!important;line-height:1.1}
+.nav-image-link img{width:clamp(32px,3.6vw,49px);height:clamp(32px,3.6vw,49px);object-fit:cover;display:block;border-radius:6px;border:1px solid rgba(36,73,232,.25);transition:transform .2s ease}
+.nav-image-link:hover img,.nav-image-link:focus-visible img{transform:rotate(-5deg) scale(1.07)}
+.nav-image-link span{display:block}
+.home-page .home-work.hero-image-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,26px);padding-top:24px;padding-bottom:clamp(36px,6vw,82px);align-items:stretch}
+.hero-nav-card{display:flex!important;flex-direction:column;gap:10px;min-width:0;text-decoration:none!important}
+.hero-nav-card img{aspect-ratio:4/3;width:100%;height:auto;object-fit:cover;border-radius:5px;transition:transform .25s ease}
+.hero-nav-card:hover img{transform:scale(1.025)}
+.home-page .hero-image-nav .hero-nav-card span{font-family:var(--font-caption);font-size:clamp(13px,1.4vw,18px);color:var(--framer-blue);line-height:1.2;text-decoration:underline;text-underline-offset:3px}
+.home-page .hero-portrait{position:relative;isolation:isolate}
+.home-page .hero-name-art{position:absolute;left:-16%;top:15%;z-index:3;pointer-events:none;color:#2449e8;font-family:var(--font-header),'Arial Black',sans-serif;font-size:clamp(32px,5.7vw,104px);font-weight:900;line-height:.78;letter-spacing:-.075em;transform:rotate(-9deg);text-shadow:3px 3px 0 #ffe500,-3px -3px 0 #ffe500;mix-blend-mode:multiply}
+.home-page .hero-portrait img{position:relative;z-index:2}
+.project-detail .project-image-pair{display:grid;gap:clamp(12px,2vw,24px);min-width:0;align-content:start}
+.project-detail .project-image-pair .project-hero{margin:0!important}
+.project-detail .project-image-pair img{max-height:430px;object-fit:contain}
+@media(max-width:800px){.topbar .nav{flex-wrap:wrap}.topbar .navlinks.nav-image-links{width:100%;justify-content:space-between}.nav-image-link img{width:42px;height:42px}.home-page .hero-name-art{left:0;top:10%}}
+@media(max-width:530px){.topbar .nav-image-link{font-size:10px!important}.topbar .nav-image-link span{max-width:85px;white-space:normal;text-align:center}.home-page .home-work.hero-image-nav{gap:10px}.hero-nav-card img{aspect-ratio:1/1}.home-page .hero-name-art{font-size:clamp(42px,12vw,75px);left:6%}}
+@media(prefers-reduced-motion:reduce){.nav-image-link img,.hero-nav-card img{transition:none}}
+
+/* v31: original transparent HELLO-HERO art layered over the portrait */
+.home-page .hero-portrait .hero-name-art{display:none}
+.home-page .hero-portrait .hero-hello-art{position:absolute;z-index:4;left:-11%;top:5%;width:clamp(170px,52%,350px);height:auto;max-height:none;object-fit:contain;pointer-events:none;transform:rotate(-10deg);filter:drop-shadow(2px 3px 0 #ffe500);animation:hello-arrive .65s cubic-bezier(.18,.8,.22,1) both}
+@keyframes hello-arrive{from{opacity:0;transform:translateY(-12px) rotate(-14deg)}to{opacity:1;transform:translateY(0) rotate(-10deg)}}
+@media(max-width:650px){.home-page .hero-portrait .hero-hello-art{left:3%;top:1%;width:min(52%,245px)}}
+@media(prefers-reduced-motion:reduce){.home-page .hero-portrait .hero-hello-art{animation:none}}

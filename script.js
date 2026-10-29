@@ -1,6 +1,6 @@
 // Edit projects.json to change project copy, roles, galleries and cover images.
 const e=(name,cls,text)=>{const el=document.createElement(name);if(cls)el.className=cls;if(text!=null)el.textContent=text;return el};
-async function loadProjects(){const response=await fetch('./projects.json?v=29');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
+async function loadProjects(){const response=await fetch('./projects.json?v=30');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
 const createImage=(source,alt,cls)=>{const image=e('img',cls);image.src=source;image.alt=alt||'';image.loading='lazy';return image};
 function roles(p){return Array.isArray(p.roles)?p.roles:(p.role||'').split(',').map(r=>r.trim()).filter(Boolean)}
 function roleTags(p){const tags=e('div','role-tags');tags.setAttribute('aria-label','My roles');roles(p).forEach(role=>tags.append(e('span','role-tag',role)));return tags}
@@ -30,13 +30,19 @@ async function showProjectDetail(){
   const article=e('section','project-copy');article.append(e('h2','','About'));
   (p.paragraphs||[]).forEach(t=>article.append(e('p','',t)));
   if(p.metric)article.append(e('p','project-metric',p.metric));
-  const imageAbout=e('div','project-image-about');figure.remove();imageAbout.append(figure,article);target.append(imageAbout);
+  const imageAbout=e('div','project-image-about');figure.remove();
+  if(p.slug==='admissions-communications-marketing'){
+    const pair=e('div','project-image-pair');pair.append(figure);
+    (p.gallery||[]).filter(m=>m.type!=='video'&&m.src).forEach(m=>{const extra=e('figure','project-hero project-hero-secondary');extra.append(createImage(m.src,m.alt||'Open House postcard'));pair.append(extra)});
+    imageAbout.append(pair,article);
+  }else imageAbout.append(figure,article);
+  target.append(imageAbout);
   // 4. Role, timeline, tools
   const meta=e('section','project-meta');meta.setAttribute('aria-label','Project details');
   const role=e('div','project-meta-item');role.append(e('h2','project-meta-label','My Role'),roleTags(p));meta.append(role);
   [['Timeline',p.timeline],['Tools',p.tools]].forEach(([title,value])=>{const col=e('div','project-meta-item');col.append(e('h2','project-meta-label',title),e('p','',value||'—'));meta.append(col)});
   target.append(meta);
-  if(p.gallery?.length){const gallery=e('section','project-gallery');gallery.append(e('h2','','Selected work'));const media=e('div','gallery-grid');p.gallery.forEach(m=>{const fig=e('figure');if(m.type==='video'&&m.url){const a=e('a','text-link','Watch video ↗');a.href=m.url;a.target='_blank';a.rel='noopener noreferrer';fig.append(a)}else if(m.src){fig.append(createImage(m.src,m.alt||m.caption||p.title))}if(m.caption)fig.append(e('figcaption','',m.caption));media.append(fig)});gallery.append(media);target.append(gallery)}
+  if(p.gallery?.length && p.slug!=='admissions-communications-marketing'){const gallery=e('section','project-gallery');gallery.append(e('h2','','Selected work'));const media=e('div','gallery-grid');p.gallery.forEach(m=>{const fig=e('figure');if(m.type==='video'&&m.url){const a=e('a','text-link','Watch video ↗');a.href=m.url;a.target='_blank';a.rel='noopener noreferrer';fig.append(a)}else if(m.src){fig.append(createImage(m.src,m.alt||m.caption||p.title))}if(m.caption)fig.append(e('figcaption','',m.caption));media.append(fig)});gallery.append(media);target.append(gallery)}
   initProjectImageLightbox(target);
   if(p.links?.length){const links=e('section','project-links');links.append(e('h2','','Links'));p.links.forEach(l=>{const a=e('a','text-link',l.label+' ↗');a.href=l.url;a.target='_blank';a.rel='noopener noreferrer';links.append(a)});target.append(links)}
  }catch(err){target.textContent='Project could not be loaded. Open this site through GitHub Pages or a local web server.'}
@@ -181,7 +187,7 @@ async function initVideoShowcase(){
  const dialog=document.getElementById('video-dialog');
  if(!grid||!dialog) return;
  let videos=[];
- try { const res=await fetch('videos.json?v=29'); if(res.ok) videos=await res.json(); }catch(_){}
+ try { const res=await fetch('videos.json?v=30'); if(res.ok) videos=await res.json(); }catch(_){}
  const allowed=['youtube','vimeo','instagram'];
  videos=videos.filter(v=>v&&v.title&&v.url&&allowed.includes(v.platform)&&/^https:\/\//i.test(v.url));
  empty.hidden=videos.length>0;
