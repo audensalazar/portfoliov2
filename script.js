@@ -228,7 +228,7 @@ async function initVideoShowcase(){
  const films=document.createElement('div');films.className='video-films';
  const reels=document.createElement('div');reels.className='video-reels';
  const reelsHeading=document.createElement('h3');reelsHeading.className='reels-heading';reelsHeading.textContent='Bite-sized stories';
- const reelsPair=document.createElement('div');reelsPair.className='reels-pair';const reelsIntro=document.createElement('p');reelsIntro.className='reels-description';reelsIntro.textContent='Creating content that reaches';
+ const reelsPair=document.createElement('div');reelsPair.className='reels-pair';const reelsIntro=document.createElement('p');reelsIntro.className='reels-description';reelsIntro.textContent='Small moments, big connections. Creating short-form content that reaches audiences and brings campus stories to life.';
  videos.forEach(v=>{
    if(v.platform==='instagram'){
      const card=document.createElement('article');card.className='reel-card';
