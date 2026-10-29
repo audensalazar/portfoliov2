@@ -140,3 +140,6 @@ Uses the supplied nav-photo.png in the header and home navigation; prevents clip
 - Updated site-wide primary cobalt blue to standard midnight blue `#191970`.
 - Recolored transparent handwritten navigation and hello-hero art while keeping alpha edges.
 - Reel titles now explicitly use Geist Pixel, matching the editorial headings.
+
+
+Version 35: Original AS artwork is available in favicon.png and favicon.ico; all HTML pages reference these icons.
