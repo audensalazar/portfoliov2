@@ -108,10 +108,12 @@
     "featured": true,
     "cover": "assets/images/social-media-strategy.png",
     "gallery": [],
-  "links": [
+    "links": [
       {
         "label": "Check out @SeattlePreparatory",
-        "url": "https://www.instagram.com/seattlepreparatory/",
+        "url": "https://www.instagram.com/seattlepreparatory/"
+      }
+    ],
     "coverAlt": "Two smartphone mockups featuring Seattle Prep social media posts and Instagram profile"
   },
   {
@@ -140,7 +142,9 @@
     "links": [
       {
         "label": "Check out Prep Post",
-        "url": "https://www.seaprep.org/fs/comms-manager/view/d26ee2da-b654-48a2-9134-77ab16d4bb20,
+        "url": "https://www.seaprep.org/fs/comms-manager/view/d26ee2da-b654-48a2-9134-77ab16d4bb20"
+      }
+    ],
     "coverAlt": "Prep Post email newsletter mockup with related email marketing creative"
   }
 ]
