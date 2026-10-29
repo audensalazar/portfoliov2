@@ -76,7 +76,14 @@
     "order": 3,
     "featured": true,
     "cover": "assets/images/admissions-marketing-original-v10.png",
-    "gallery": [],
+    "gallery": [
+      {
+        "type": "image",
+        "src": "assets/images/OHPostcardMockUp.png",
+        "alt": "THINK PREP! Open House direct mail postcard mockup",
+        "caption": "THINK PREP! Open House postcard"
+      }
+    ],
     "links": [],
     "coverAlt": "THINK PREP admissions brochures and Open House program mockup"
   },

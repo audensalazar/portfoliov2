@@ -4,34 +4,34 @@
     "platform": "youtube",
     "url": "https://www.youtube.com/watch?v=1hdw2lQQW30",
     "description": "A glimpse into daily life at Seattle Prep for prospective families.",
-    "thumbnail": "https://img.youtube.com/vi/1hdw2lQQW30/hqdefault.jpg"
+    "thumbnail": "assets/images/video-gifs/prep-experience.gif"
   },
   {
     "title": "YOU’RE ACCEPTED! | SEATTLE PREP CLASS OF 2030",
     "platform": "vimeo",
     "url": "https://vimeo.com/1162370304?h=c732f32ca9",
     "description": "A Seattle Prep welcome to newly admitted students from their future peers.",
-    "thumbnail": "assets/images/video-covers/accepted.jpg"
+    "thumbnail": "assets/images/video-gifs/accepted.gif"
   },
   {
     "title": "Computer Science at Seattle Prep — Build the Next Gen of Tech",
     "platform": "vimeo",
     "url": "https://vimeo.com/1160289252?h=75b8835f5b",
     "description": "Encouraging and informing current students on the pathways available to shape the future of technology.",
-    "thumbnail": "assets/images/video-covers/computerscience.jpg"
+    "thumbnail": "assets/images/video-gifs/computer-science.gif"
   },
   {
     "title": "Think Prep! Open House 2026 Promo",
     "platform": "instagram",
     "url": "https://www.instagram.com/reel/Dew8vkVBccg/",
     "description": "",
-    "thumbnail": ""
+    "thumbnail": "assets/images/video-gifs/think-prep-reel.gif"
   },
   {
     "title": "Olympic Week 2026",
     "platform": "instagram",
     "url": "https://www.instagram.com/reel/DV172kejv7o/",
     "description": "",
-    "thumbnail": ""
+    "thumbnail": "assets/images/video-gifs/olympic-week-reel.gif"
   }
 ]
