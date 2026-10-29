@@ -126,3 +126,11 @@ Version 29: new floating-head homepage PNG; project hero/gallery image lightboxe
 
 ## Version 31
 Homepage overlays the original supplied transparent `hello-hero` image (assets/images/hello-hero.png) over the floating-head portrait, replacing the temporary typographic name overlay.
+
+
+## Version 32 — correct handwritten navigation
+The header uses nav-name.png (home), nav-design.png (Design), nav-writing.png (Writing) and nav-about.png (About). The Photography/Videography link retains its existing portfolio photo since no new matching graphic was supplied. The homepage large Design and Writing links also use the supplied handwritten assets. The supplied hello-hero.png remains the floating head overlay.
+
+
+## Version 33
+Uses the supplied nav-photo.png in the header and home navigation; prevents clipping of hello-hero.png on the portrait.
