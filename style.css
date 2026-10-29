@@ -582,3 +582,28 @@ body p,.page-header p,.hero p,.project-copy p,.project-detail p,.card p,.about-g
 @keyframes hello-arrive{from{opacity:0;transform:translateY(-12px) rotate(-14deg)}to{opacity:1;transform:translateY(0) rotate(-10deg)}}
 @media(max-width:650px){.home-page .hero-portrait .hero-hello-art{left:3%;top:1%;width:min(52%,245px)}}
 @media(prefers-reduced-motion:reduce){.home-page .hero-portrait .hero-hello-art{animation:none}}
+
+/* V32: supplied handwritten nav assets, displayed without duplicate captions */
+.topbar .nav {display:flex;justify-content:space-between;align-items:center!important;flex-direction:row!important;gap:clamp(18px,3vw,48px)!important;}
+.topbar .brand {flex:0 1 280px;min-width:130px;display:block;line-height:0;}
+.topbar .brand img {display:block;width:100%;max-width:280px;height:auto;object-fit:contain;}
+.topbar .navlinks.nav-image-links {display:flex;flex:0 1 auto;align-items:center;justify-content:flex-end;gap:clamp(10px,2.1vw,28px);flex-wrap:nowrap;}
+.topbar .nav-image-link {display:flex;align-items:center;justify-content:center;line-height:0;min-width:0;}
+.topbar .nav-image-link img {display:block;width:auto;height:clamp(20px,2.4vw,35px);max-width:clamp(58px,10vw,170px);object-fit:contain;border:0;border-radius:0;aspect-ratio:auto;}
+.topbar .nav-image-link[href="photography-videography.html"] img {width:clamp(32px,3.4vw,48px);height:clamp(32px,3.4vw,48px);object-fit:cover;border-radius:3px;}
+.topbar .nav-image-link:hover img,.topbar .nav-image-link:focus-visible img {transform:translateY(-2px) rotate(-2deg);}
+.hero-image-nav .hero-nav-card[href="design.html"] img,.hero-image-nav .hero-nav-card[href="writing.html"] img {object-fit:contain;aspect-ratio:auto;height:clamp(70px,11vw,155px);width:100%;border-radius:0;}
+.hero-image-nav .hero-nav-card {align-items:center;justify-content:center;}
+.hero-image-nav .hero-nav-card[href="photography-videography.html"] img {height:clamp(110px,16vw,230px);object-fit:cover;}
+@media(max-width:750px){.topbar .nav {flex-wrap:wrap;gap:14px!important}.topbar .brand{flex:0 0 100%;max-width:225px}.topbar .navlinks.nav-image-links{width:100%;justify-content:space-between}.topbar .nav-image-link img{height:clamp(17px,4vw,29px);max-width:clamp(50px,17vw,125px)}.topbar .nav-image-link[href="photography-videography.html"] img{width:34px;height:34px}}
+@media(max-width:480px){.topbar .nav-image-link img{max-width:clamp(45px,16vw,85px)}.hero-image-nav .hero-nav-card[href="design.html"] img,.hero-image-nav .hero-nav-card[href="writing.html"] img{height:65px}}
+
+/* V33 — supplied handwritten PHOTO/VIDEO image links */
+.topbar .nav-image-link[href="photography-videography.html"] img {width:auto;height:clamp(20px,2.4vw,35px);max-width:clamp(80px,12vw,175px);object-fit:contain;border-radius:0;aspect-ratio:auto;}
+.hero-image-nav .hero-nav-card[href="photography-videography.html"] img {width:100%;height:clamp(70px,11vw,155px);object-fit:contain;aspect-ratio:auto;border-radius:0;}
+@media(max-width:750px){.topbar .nav-image-link[href="photography-videography.html"] img{width:auto;height:clamp(17px,4vw,29px);max-width:clamp(60px,19vw,130px);}}
+@media(max-width:480px){.hero-image-nav .hero-nav-card[href="photography-videography.html"] img{height:65px;}}
+/* Let the hello-hero graphic extend outside the portrait without cropping */
+.home-page .hero-portrait {overflow:visible;isolation:isolate;}
+.home-page .hero-portrait .hero-hello-art {left:0;top:1%;width:clamp(145px,50%,320px);max-height:none;object-fit:contain;overflow:visible;transform-origin:center;}
+@media(max-width:650px){.home-page .hero-portrait{overflow:visible;}.home-page .hero-portrait .hero-hello-art{left:3%;top:2%;width:min(50%,240px);}}
