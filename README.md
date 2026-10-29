@@ -117,3 +117,12 @@ V28: Corrected About page missing script.js (which caused page transition freeze
 
 
 Version 29: new floating-head homepage PNG; project hero/gallery image lightboxes; Think Prep postcard gallery; About email button; all five GIF thumbnail previews, with Instagram Reels linking directly to their original posts.
+
+## v30
+- Sitewide tighter body and heading leading.
+- Main navigation and homepage category navigation now use linked images.
+- Home portrait has a typographic name overlay (no standalone name-hero image asset was supplied).
+- THINK PREP About section displays both existing campaign and Open House postcard images, removing duplicate Selected work and postcard caption.
+
+## Version 31
+Homepage overlays the original supplied transparent `hello-hero` image (assets/images/hello-hero.png) over the floating-head portrait, replacing the temporary typographic name overlay.
