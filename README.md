@@ -134,3 +134,9 @@ The header uses nav-name.png (home), nav-design.png (Design), nav-writing.png (W
 
 ## Version 33
 Uses the supplied nav-photo.png in the header and home navigation; prevents clipping of hello-hero.png on the portrait.
+
+
+## Version 34
+- Updated site-wide primary cobalt blue to standard midnight blue `#191970`.
+- Recolored transparent handwritten navigation and hello-hero art while keeping alpha edges.
+- Reel titles now explicitly use Geist Pixel, matching the editorial headings.
