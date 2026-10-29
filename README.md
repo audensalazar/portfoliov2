@@ -143,3 +143,15 @@ Uses the supplied nav-photo.png in the header and home navigation; prevents clip
 
 
 Version 35: Original AS artwork is available in favicon.png and favicon.ico; all HTML pages reference these icons.
+
+
+## Version 36 — Editable source formatting
+
+- All seven HTML pages are indented and expanded to readable lines (instead of 4–5 long lines).
+- JSON files (`projects.json`, `videos.json`) are formatted for easy content editing.
+- CSS and JavaScript are retained **byte-for-byte** from Version 35 because they were already multiline and retaining them unchanged protects all transitions, galleries, and other interactions.
+- No changes were made to wording, navigation, images, page design, or site behavior.
+
+### How to edit in GitHub
+
+Open any HTML file, click the pencil icon, make changes, and select Commit changes. Most project descriptions are stored in `projects.json`; video titles and thumbnails are in `videos.json`. Keep the `CNAME` file containing `byauden.com` if your repository already has one; this archive does not add/remove it.
