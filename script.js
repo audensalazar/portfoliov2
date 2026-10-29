@@ -1,6 +1,6 @@
 // Edit projects.json to change project copy, roles, galleries and cover images.
 const e=(name,cls,text)=>{const el=document.createElement(name);if(cls)el.className=cls;if(text!=null)el.textContent=text;return el};
-async function loadProjects(){const response=await fetch('./projects.json?v=25');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
+async function loadProjects(){const response=await fetch('./projects.json?v=29');if(!response.ok)throw new Error('Unable to load projects.json');return response.json()}
 const createImage=(source,alt,cls)=>{const image=e('img',cls);image.src=source;image.alt=alt||'';image.loading='lazy';return image};
 function roles(p){return Array.isArray(p.roles)?p.roles:(p.role||'').split(',').map(r=>r.trim()).filter(Boolean)}
 function roleTags(p){const tags=e('div','role-tags');tags.setAttribute('aria-label','My roles');roles(p).forEach(role=>tags.append(e('span','role-tag',role)));return tags}
@@ -37,8 +37,30 @@ async function showProjectDetail(){
   [['Timeline',p.timeline],['Tools',p.tools]].forEach(([title,value])=>{const col=e('div','project-meta-item');col.append(e('h2','project-meta-label',title),e('p','',value||'—'));meta.append(col)});
   target.append(meta);
   if(p.gallery?.length){const gallery=e('section','project-gallery');gallery.append(e('h2','','Selected work'));const media=e('div','gallery-grid');p.gallery.forEach(m=>{const fig=e('figure');if(m.type==='video'&&m.url){const a=e('a','text-link','Watch video ↗');a.href=m.url;a.target='_blank';a.rel='noopener noreferrer';fig.append(a)}else if(m.src){fig.append(createImage(m.src,m.alt||m.caption||p.title))}if(m.caption)fig.append(e('figcaption','',m.caption));media.append(fig)});gallery.append(media);target.append(gallery)}
+  initProjectImageLightbox(target);
   if(p.links?.length){const links=e('section','project-links');links.append(e('h2','','Links'));p.links.forEach(l=>{const a=e('a','text-link',l.label+' ↗');a.href=l.url;a.target='_blank';a.rel='noopener noreferrer';links.append(a)});target.append(links)}
  }catch(err){target.textContent='Project could not be loaded. Open this site through GitHub Pages or a local web server.'}
+}
+
+// Case-study images: shared accessible lightbox for the hero and gallery.
+function initProjectImageLightbox(container){
+ const images=[...container.querySelectorAll('.project-hero img, .gallery-grid img')];
+ if(!images.length) return;
+ const dialog=document.createElement('dialog');dialog.className='project-lightbox';dialog.setAttribute('aria-label','Project image viewer');
+ const close=document.createElement('button');close.type='button';close.className='project-lightbox-close';close.textContent='Close ×';close.setAttribute('aria-label','Close image viewer');
+ const pic=document.createElement('img');pic.alt='';
+ const controls=document.createElement('div');controls.className='project-lightbox-controls';
+ const prev=document.createElement('button');prev.type='button';prev.textContent='← Previous';prev.setAttribute('aria-label','Previous image');
+ const count=document.createElement('span');count.setAttribute('aria-live','polite');
+ const next=document.createElement('button');next.type='button';next.textContent='Next →';next.setAttribute('aria-label','Next image');
+ controls.append(prev,count,next);dialog.append(close,pic,controls);document.body.append(dialog);
+ let current=0;let opener=null;
+ const show=i=>{current=(i+images.length)%images.length;pic.src=images[current].currentSrc||images[current].src;pic.alt=images[current].alt||'Project image';count.textContent=`${current+1} / ${images.length}`;prev.disabled=next.disabled=images.length<2;};
+ images.forEach((im,i)=>{const btn=document.createElement('button');btn.type='button';btn.className='project-image-trigger';btn.setAttribute('aria-label','Enlarge '+(im.alt||'project image'));im.parentNode.insertBefore(btn,im);btn.append(im);btn.addEventListener('click',()=>{opener=btn;show(i);dialog.showModal();});});
+ close.addEventListener('click',()=>dialog.close());prev.addEventListener('click',()=>show(current-1));next.addEventListener('click',()=>show(current+1));
+ dialog.addEventListener('click',ev=>{if(ev.target===dialog)dialog.close()});
+ dialog.addEventListener('keydown',ev=>{if(ev.key==='ArrowLeft'){ev.preventDefault();show(current-1)}if(ev.key==='ArrowRight'){ev.preventDefault();show(current+1)}});
+ dialog.addEventListener('close',()=>{pic.removeAttribute('src');opener?.focus()});
 }
 
 // Accessible photo stack + lightbox; works without external libraries.
@@ -159,7 +181,7 @@ async function initVideoShowcase(){
  const dialog=document.getElementById('video-dialog');
  if(!grid||!dialog) return;
  let videos=[];
- try { const res=await fetch('videos.json?v=19'); if(res.ok) videos=await res.json(); }catch(_){}
+ try { const res=await fetch('videos.json?v=29'); if(res.ok) videos=await res.json(); }catch(_){}
  const allowed=['youtube','vimeo','instagram'];
  videos=videos.filter(v=>v&&v.title&&v.url&&allowed.includes(v.platform)&&/^https:\/\//i.test(v.url));
  empty.hidden=videos.length>0;
@@ -203,10 +225,13 @@ async function initVideoShowcase(){
  const reelsPair=document.createElement('div');reelsPair.className='reels-pair';const reelsIntro=document.createElement('p');reelsIntro.className='reels-description';reelsIntro.textContent='Creating content that reaches';
  videos.forEach(v=>{
    if(v.platform==='instagram'){
-     const info=embedInfo(v);
      const card=document.createElement('article');card.className='reel-card';
-     if(info){const iframe=document.createElement('iframe');iframe.className='instagram-native-embed';iframe.src=info.src;iframe.title=v.title;iframe.loading='lazy';iframe.allow='encrypted-media; picture-in-picture; clipboard-write';iframe.referrerPolicy='strict-origin-when-cross-origin';card.append(iframe)}
-     const link=document.createElement('a');link.className='instagram-native-link';link.href=v.url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='View on Instagram ↗';card.append(link);reelsPair.append(card);return;
+     const link=document.createElement('a');link.className='reel-gif-link';link.href=v.url;link.target='_blank';link.rel='noopener noreferrer';link.setAttribute('aria-label','Watch '+v.title+' on Instagram (opens new tab)');
+     if(v.thumbnail){const img=document.createElement('img');img.src=v.thumbnail;img.alt='Animated preview of '+v.title;img.loading='lazy';link.append(img)}
+     const icon=document.createElement('span');icon.className='reel-open-icon';icon.textContent='↗';icon.setAttribute('aria-hidden','true');link.append(icon);
+     const title=document.createElement('h4');title.className='reel-title';title.textContent=v.title;
+     const view=document.createElement('a');view.className='instagram-native-link';view.href=v.url;view.target='_blank';view.rel='noopener noreferrer';view.textContent='View on Instagram ↗';
+     card.append(link,title,view);reelsPair.append(card);return;
    }
    const card=document.createElement('article');card.className='video-card';
    const button=document.createElement('button');button.type='button';button.className='video-cover';button.setAttribute('aria-label','Play '+v.title);

@@ -114,3 +114,6 @@ V27: Adds blue portrait to homepage; temporary blue portrait on About page until
 
 
 V28: Corrected About page missing script.js (which caused page transition freeze), included actual passportme PNG on About, set homepage hero gap to zero, added transition failsafe and adjusted About layout.
+
+
+Version 29: new floating-head homepage PNG; project hero/gallery image lightboxes; Think Prep postcard gallery; About email button; all five GIF thumbnail previews, with Instagram Reels linking directly to their original posts.
